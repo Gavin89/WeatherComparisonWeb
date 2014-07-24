@@ -1,6 +1,6 @@
 var http = require('http'),
 db = require('./model/db'),
-pages = require('/pages');
+pages = require('./pages');
 
 http.createServer(function (req, res) {
 	pages.index(req, res);
