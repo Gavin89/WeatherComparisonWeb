@@ -8,8 +8,8 @@ var sourceSchema = new mongoose.Schema({
 	weather: String,
 	icon: String,
 	temp: int,
-	windspeed: int
-	ratings: double
+	windspeed: int,
+	ratings: double,
 	time: int
 });
 mongoose.model( 'Sources', sourceSchema );
