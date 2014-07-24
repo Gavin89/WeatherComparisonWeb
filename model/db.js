@@ -3,14 +3,14 @@ var mongoose = require( 'mongoose');
 var sourceSchema = new mongoose.Schema({
 	sourceName: String,
 	location_name: String,
-	latitude: double,
-	longitude: double,
+	latitude: Number,
+	longitude: Number,
 	weather: String,
 	icon: String,
-	temp: int,
-	windspeed: int,
-	ratings: double,
-	time: int
+	temp: Number,
+	windspeed: Number,
+	ratings: Number,
+	time: Number
 });
 mongoose.model( 'Sources', sourceSchema );
 
