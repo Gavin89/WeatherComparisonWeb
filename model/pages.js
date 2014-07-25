@@ -23,7 +23,7 @@ exports.index = function(req, res) {
 		}else{
 			console.log('Source Created: ' + sources);
 			strOutput = sources.sourceName + ' created in Source ' + sources.location_name
-			+ '\nat ' + sources.time_stamp;
+			+ '\nat ' + console.log(sources);
 		}
 		res.write(strOutput);
 		res.end();
