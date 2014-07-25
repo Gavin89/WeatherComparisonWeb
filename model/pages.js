@@ -11,7 +11,7 @@ exports.index = function(req, res) {
 		temp: 20,
 		windspeed: 10,
 		ratings: 5.43,
-		time: 0300
+		time_stamp: 0300
 	}, function(err, sources){
 		var strOutput;
 		res.writeHead(200, {
@@ -23,7 +23,7 @@ exports.index = function(req, res) {
 		}else{
 			console.log('Source Created: ' + sources);
 			strOutput = sources.sourceName + ' created in Source ' + sources.location_name
-			+ '\nat ' + sources.time;
+			+ '\nat ' + sources.time_stamp;
 		}
 		res.write(strOutput);
 		res.end();
