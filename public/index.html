@@ -7,11 +7,13 @@
 		<link href = "css/bootstrap.min.css" rel = "stylesheet" medi = "screen">
 		<link href = "css/styles.css" rel = "stylesheet">
 		<script type="text/javascript">
-  <!--
-  if (screen.width <= 800) {
-    window.location = "http://m.compareweather.co.uk";
-  }
-  //-->
+ 
+	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/IEMobile/i.test(navigator.userAgent)){
+	if(document.URL !="http://m.compareweather.co.uk/")
+		{
+		window.location ="http://m.compareweather.co.uk/";
+		}
+	}
 </script>
 	</head>
 	<body>
