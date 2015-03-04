@@ -26,43 +26,48 @@
 				</div>
 				
         <div class="col-sm-3 col-md-3 pull-right">
-        <form class="navbar-form" role="search">
+      
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="location_search_name">
             <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <button class="btn btn-default" type="submit"  id="location_search_btn"><i class="glyphicon glyphicon-search"></i></button>
             </div>
         </div>
-        </form>
+		
+		</br>
+  
         </div>
 				
 			</div>
-
+<div id="weather_display" style="display:none;">
 		<div  class = "page-header">
-			<h5>Tipton, Birmingham<br/><small>(Coleshill)</small> </h5>
+			<h5 id="location_name"><br/> </h5>
 			
 		</div>
-		<div class="btn-group btn-group-justified">
+		<div class="btn-group btn-group-justified" id="timeline">
 			<div class="btn-group">
-				<button type="button" class="btn btn-default">0000</button>
+				<button type="button" class="btn btn-default btn-primary" time-value="0">0000</button>
 			</div>
 			<div class="btn-group">
-				<button type="button" class="btn btn-default">0300</button>
+				<button type="button" class="btn btn-default" time-value="3">0300</button>
 			</div>
 			<div class="btn-group">
-				<button type="button" class="btn btn-default">0900</button>
-			</div>
-						<div class="btn-group">
-				<button type="button" class="btn btn-default">1200</button>
+				<button type="button" class="btn btn-default" time-value="6">0600</button>
 			</div>
 			<div class="btn-group">
-				<button type="button" class="btn btn-default">1500</button>
+				<button type="button" class="btn btn-default" time-value="9">0900</button>
 			</div>
 			<div class="btn-group">
-				<button type="button" class="btn btn-default">1800</button>
+				<button type="button" class="btn btn-default" time-value="12">1200</button>
 			</div>
 			<div class="btn-group">
-				<button type="button" class="btn btn-default">2100</button>
+				<button type="button" class="btn btn-default" time-value="15">1500</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" time-value="18">1800</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" time-value="21">2100</button>
 			</div>
 
 			</div>
@@ -72,37 +77,27 @@
             <table class="table">
 			
 				<tr>
-					<th><h3>Source</h3></th>
+<td></td>
 						<td><h3>MO<br/><small>(MetOffice)</small></h3></td>
-						<td><h3>WU<br/><small>(WeatherUnderground)</small></h3></td>
-						<td><h3>OWM<br/><small>(OpenWeatherMap)</small></h3></td>
 						<td><h3>FIO<br/><small>(ForecastIO)</small></h3></td>
 				</tr>
 				<tr>
 					<th><h3>Temperature</h3></th>
-						<td>20c</td>
-						<td>19c</td>
-						<td>18c</td>
-						<td>20c</td>
+						<td id="mo_temperature"></td>
+						<td id="fio_temperature"></td>
 				</tr>
 				<tr>
 					<th><h3>Windspeed</h3></th>
-						<td>10 mph</td>
-						<td>8 mph</td>
-						<td>11 mph</td>
-						<td>9 mph</td>
+						<td id="mo_windspeed"></td>
+						<td id="fio_windspeed"></td>
 				</tr>
 				<tr>
 					<th><h3>Weather</h3></th>
-						<td>Sunny</td>
-						<td>Cloudy</td>
-						<td>Sunny</td>
-						<td>Sunny</td>
+						<td id="mo_summary"></td>
+						<td id="fio_summary"></td>
 				</tr>
 				<tr>
 					<th><h3>Icon</h3></th>
-						<td><img src="images/no-image.jpg" alt="..." class="img-circle"></td>
-						<td><img src="images/no-image.jpg" alt="..." class="img-circle"></td>
 						<td><img src="images/no-image.jpg" alt="..." class="img-circle"></td>
 						<td><img src="images/no-image.jpg" alt="..." class="img-circle"></td>
 				</tr>
@@ -110,18 +105,135 @@
 					<th><h3>Ratings</h3></th>
 						<td align = "center"><img src="images/5-rating.jpg"></td>
 						<td><img src="images/5-rating.jpg"></td>
-						<td><img src="images/5-rating.jpg"></td>
-						<td><img src="images/5-rating.jpg"></td>
 				</tr>
 			</table>
 		</div>
+</div>
+
+<div id="no_weather_display" >
+	<div class="alert alert-warning alert-dismissible" role="alert" id="error_alert" style="display:none;">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <div></div>
+	</div>
+	<p>Use the search box above to get the temprature of a location</p>
+</div>
 		</div>
 		
-		<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src = "js/bootstrap.js"></script>
+
 		
 	<footer>
 		
 	</footer>
+	
+			<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src = "js/bootstrap.js"></script>
+		<script src = "js/date_format.js"></script>
+		
+		<script>
+
+			var parsed_data= {};
+			
+			$(function() {
+		
+				$('#location_search_btn').click(function() {
+					var location_name = $('#location_search_name').val();
+					var current_date = new Date();
+					
+					search_by_location_and_date(location_name, current_date.format("dd-mm-yyyy"), function(data) {
+					
+						parse_data(data);
+					
+					});
+				});
+				
+				$('#timeline button').click(function() {
+					var time_value = $(this).attr('time-value');
+				
+					$('#timeline button').removeClass('btn-primary');
+					$(this	).addClass('btn-primary');
+					$(this	).addClass('btn-default');
+					display_data(time_value, parsed_data);
+				});
+			});
+				
+			var parse_data = function(data) {
+				var mo_data = {};
+				var fio_data = {};
+				
+				data.forEach(function(item) {
+					var weather_source = item.weather_source;
+					var time = item.time;
+					var temperature = item.temperature;
+					var summary = item.summary;
+					var windspeed = item.windspeed;
+					
+					var data_obj = {
+						time: time,
+						temperature: temperature,
+						summary: summary,
+						windspeed: windspeed
+					};
+					
+					if (weather_source == "MetOffice") {
+						mo_data[time] = data_obj;
+					} else if (weather_source == "ForecastIO") {
+						fio_data[time] = data_obj;
+					}
+				});
+				parsed_data["metoffice"] = mo_data;
+				parsed_data["forecastio"] = fio_data;
+				
+				
+				
+				display_data("0", parsed_data);
+			}
+			
+			
+			var display_data = function(time, data) {
+			
+				
+				
+				$("#mo_temperature").text(data.metoffice[time].temperature+" ℃");
+				$("#mo_windspeed").text(data.metoffice[time].windspeed+" mph");
+				$("#mo_summary").text(data.metoffice[time].summary);
+				
+				$("#fio_temperature").text(data.forecastio[time].temperature+" ℃");
+				$("#fio_windspeed").text(data.forecastio[time].windspeed+" mph");
+				$("#fio_summary").text(data.forecastio[time].summary);
+				
+				
+				
+			
+			};
+			
+			var search_by_location_and_date = function(location, date, callback) {
+			var api_url = "locations/by_name/"+location+"/"+date;
+			
+				$.ajax({
+				  url: api_url,
+				  context: document.body,
+				  dateType: "json"
+				}).done(function(data) {
+					
+					
+					if (data.length > 0) {
+						$('#location_name').text(location);
+						 callback(data);
+						 $('#weather_display').show();
+						 $('#no_weather_display').hide();
+						 $('error_alert').hide();
+					} else {
+						 $('#weather_display').hide();
+						  $('#no_weather_display').show();
+						  $('#error_alert div').text('We were unable to find any temperature data for your location');
+						  $('#error_alert').show();
+					}
+				 
+				}).fail(function() {
+					console.log("Search Failed");
+				  });
+			}
+			
+		</script>
 	</body>
 <html>
