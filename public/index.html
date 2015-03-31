@@ -128,44 +128,22 @@
 			<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src = "js/bootstrap.js"></script>
 		<script src = "js/date_format.js"></script>
-		    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-		<script>
 		
-		 var geocoder;
+		<script>
 
 			var parsed_data= {};
 			
 			$(function() {
-			
-			 geocoder = new google.maps.Geocoder();
 		
 				$('#location_search_btn').click(function() {
 					var location_name = $('#location_search_name').val();
 					var current_date = new Date();
 					
-					/*search_by_location_name_and_date(location_name, current_date.format("dd-mm-yyyy"), function(data) {
+					search_by_location_and_date(location_name, current_date.format("dd-mm-yyyy"), function(data) {
 					
-						parse_data(data);
-					
-					});*/
-					
-					geocoder.geocode( { 'address': location_name}, function(results, status) {
-					if (status == google.maps.GeocoderStatus.OK) {
-					  var location = results[0].geometry.location;
-					  
-					  search_by_location_position_and_date(location.k, location.D, current_date.format("dd-mm-yyyy"), function(data) {
-						
 						parse_data(data);
 					
 					});
-
-					} else {
-					  alert('Geocode was not successful for the following reason: ' + status);
-					}
-				  });
-									
-					
-					
 				});
 				
 				$('#timeline button').click(function() {
@@ -228,7 +206,7 @@
 			
 			};
 			
-			var search_by_location_name_and_date = function(location, date, callback) {
+			var search_by_location_and_date = function(location, date, callback) {
 			var api_url = "locations/by_name/"+location+"/"+date;
 			
 				$.ajax({
@@ -256,37 +234,6 @@
 				  });
 			}
 			
-			var search_by_location_position_and_date = function(lng, lat, date, callback) {
-			var api_url = "locations/by_position/"+lng+"/"+lat+"/"+date;
-			
-				$.ajax({
-				  url: api_url,
-				  context: document.body,
-				  dateType: "json"
-				}).done(function(data) {
-						
-						console.log(data);
-
-						if (data.length > 0) {
-						$('#location_name').text(location);
-						 callback(data);
-						 $('#weather_display').show();
-						 $('#no_weather_display').hide();
-						 $('error_alert').hide();
-					} else {
-						 $('#weather_display').hide();
-						  $('#no_weather_display').show();
-						  $('#error_alert div').text('We were unable to find any temperature data for your location');
-						  $('#error_alert').show();
-					}
-				 
-				}).fail(function() {
-					console.log("Search Failed");
-				  });
-			}
-			
 		</script>
-		
-		
 	</body>
 <html>
