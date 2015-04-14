@@ -49,8 +49,21 @@ Location.find({location_name: req.params.location_name, date: req.params.date}, 
 });
 
 app.get('/locations/by_position/:lng/:lat/:date', function(req, res) {
+/**
 Location.find({longitude: req.params.lng, latitude: req.params.lat}, function(error, location){
     if(error){
+        res.json(error);
+    }
+    else if(location == null){
+        res.json('no such location')
+    } else {
+    	res.send(location)
+    }
+});**/
+var query =  {loc : { $near : [  req.params.lat,req.params.lng], $maxDistance: 2}, date: req.params.date};
+
+Location.find( query, function(error, location) {
+	if(error){
         res.json(error);
     }
     else if(location == null){

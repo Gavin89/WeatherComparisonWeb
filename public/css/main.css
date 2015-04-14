@@ -202,32 +202,32 @@ table {
 }
 .rankings {
 	
-	background-image:  url("/images/5-rating.jpg");
+	background-image:  url("../images/5-rating.jpg");
 	background-repeat: no-repeat;
 	background-position-x: center;
     background-position-y: center;
 }
 .mo_windspeed {
-	background-image:  url("/images/windspeed.png");
+	background-image:  url("../images/windspeed.png");
 	background-repeat: no-repeat;
 	background-position-x: center;
 }
 
 .fo_temperature {
-	background-image:  url("/images/temp_cold.png");
+	background-image:  url("../images/temp_cold.png");
 	background-repeat: no-repeat;
 	background-position-y: center;
 	background-position-x: center;
 }
 
 .fo_windspeed {
-	background-image:  url("/images/windspeed.png");
+	background-image:  url("../images/windspeed.png");
 	background-repeat: no-repeat;
 	background-position-x: center;
 }
 
 .temp_circle_hot {
-	background-image:  url("/images/temp_hot.png");
+	background-image:  url("../images/temp_hot.png");
 	background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
@@ -236,7 +236,7 @@ table {
 }
 
 .temp_circle_warm {
-	background-image:  url("/images/temp_warm.png");
+	background-image:  url("../images/temp_warm.png");
 	background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
@@ -245,7 +245,7 @@ table {
 
 
 .temp_circle_normal {
-	background-image:  url("/images/temp_normal.png");
+	background-image:  url("../images/temp_normal.png");
 	background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;	
@@ -253,7 +253,7 @@ table {
 }
 
 .temp_circle_cold {
-	background-image:  url("/images/temp_cold.png");
+	background-image:  url("../images/temp_cold.png");
 	background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
