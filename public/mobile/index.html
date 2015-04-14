@@ -10,9 +10,9 @@
 		<meta name="author" content="">
 		
 		<title>CompareWeather</title>
-		<link href = "../css/bootstrap.min.css" rel = "stylesheet" medi = "screen"/>
+		<link href = "css/bootstrap.min.css" rel = "stylesheet" medi = "screen"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-		<link href = "/main.css" rel = "stylesheet"/>
+		<link href = "css/main.css" rel = "stylesheet"/>
 		
 		<script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		
@@ -26,7 +26,7 @@
 			<div class="col-sm-3">		
 				
 				<div class="input-group pull-right">
-					<input type="text" class="form-control" placeholder="e.g WV10" name="srch-term" id="location_search_name">
+					<input type="text" class="form-control" placeholder="e.g WV10" id="location_search_name">
 					<div class="input-group-btn">
 						<button class="btn btn-default" type="submit"  id="location_search_btn"><i class="glyphicon glyphicon-search"></i></button>
 					</div>
@@ -62,49 +62,10 @@
 							<div class="tab-content">
 								<div class="tab-pane fade in active" id="metOfficeToday">
 									<div class="row clearfix">							
-										<center><h4>Met Office <img src="../images/5-rating.jpg"></h4><center>
+										<h4>Met Office <img src="images/5-rating.jpg"></h4>
 										<div class="table-responsive">
-											<table class="table">
-												<tr>
-													<th><h4>0000</h4></th>
-													<th><h4>0300</h4></th>
-													<th><h4>0600</h4></th>
-													<th><h4>0900</h4></th>
-													<th><h4>1200</h4></th>
-													<th><h4>1500</h4></th>
-													<th><h4>1800</h4></th>
-													<th><h4>2100</h4></th>
-												</tr>
-												<tr>
-													<td class="temp_circle_warm">10c</td>
-													<td class="temp_circle_hot">34c</td>
-													<td class="temp_circle_warm">18c</td>
-													<td class="temp_circle_normal">8c</td>
-													<td class="temp_circle_cold">-1c</td>
-													<td class="temp_circle_hot">30c</td>
-													<td class="temp_circle_cold">-4c</td>
-													<td class="temp_circle_normal">10c</td>
-												</tr>
-												<tr>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-												</tr>
-												<tr>
-													<td class"mo_summary"><img src="images/icon-set/PNG/50x50/sunny.png" alt="..." class="img-circle"><p>Sunny</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/fair.gif" alt="..." class="img-circle"><p>Fair</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/snow.gif" alt="..." class="img-circle"><p>Snow</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/hazy.gif" alt="..." class="img-circle"><p>Hazy</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/fog.gif" alt="..." class="img-circle"><p>Fog</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/p-c-rain.gif" alt="..." class="img-circle"><p>Rain</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/cloudy.gif" alt="..." class="img-circle"><p>Couldy</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/blizzard.gif" alt="..." class="img-circle"><p>Blizzard</p></td>
-												</tr>
+											<table class="table" id="metoffice_forecast_today_table">
+									
 											</table>
 										</div>
 									</div>
@@ -113,47 +74,8 @@
 									<div class="row clearfix">
 										<h4>Met Office <img src="images/5-rating.jpg"></h4>
 										<div class="table-responsive">
-											<table class="table">
-												<tr>
-													<th><h4>0000</h4></th>
-													<th><h4>0300</h4></th>
-													<th><h4>0600</h4></th>
-													<th><h4>0900</h4></th>
-													<th><h4>1200</h4></th>
-													<th><h4>1500</h4></th>
-													<th><h4>1800</h4></th>
-													<th><h4>2100</h4></th>
-												</tr>
-												<tr>
-													<td class="temp_circle_warm">10c</td>
-													<td class="temp_circle_hot">34c</td>
-													<td class="temp_circle_warm">18c</td>
-													<td class="temp_circle_normal">8c</td>
-													<td class="temp_circle_cold">-1c</td>
-													<td class="temp_circle_hot">30c</td>
-													<td class="temp_circle_cold">-4c</td>
-													<td class="temp_circle_normal">10c</td>
-												</tr>
-												<tr>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-													<td class="mo_windspeed"><p>20mph</p></td>
-												</tr>
-												<tr>
-													<td class"mo_summary"><img src="images/icon-set/PNG/50x50/sunny.png" alt="..." class="img-circle"><p>Sunny</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/fair.gif" alt="..." class="img-circle"><p>Fair</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/snow.gif" alt="..." class="img-circle"><p>Snow</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/hazy.gif" alt="..." class="img-circle"><p>Hazy</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/fog.gif" alt="..." class="img-circle"><p>Fog</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/p-c-rain.gif" alt="..." class="img-circle"><p>Rain</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/cloudy.gif" alt="..." class="img-circle"><p>Couldy</p></td>
-													<td class"mo_summary"><img src="images/icon-set/GIF/50x50/blizzard.gif" alt="..." class="img-circle"><p>Blizzard</p></td>
-												</tr>
+											<table class="table" id="metoffice_forecast_tomorrow_table">
+										
 												
 											</table>
 										</div>
@@ -175,49 +97,10 @@
 									<div class="row clearfix">
 									<h4>ForecastIO <img src="images/5-rating.jpg"></td></h4>		
 									<div class="table-responsive">
-										<table class="table">
+										<table class="table" id="forecastio_forecast_today_table">
 											
-											<tr>
-												<th><h4>0000</h4></th>
-												<th><h4>0300</h4></th>
-												<th><h4>0600</h4></th>
-												<th><h4>0900</h4></th>
-												<th><h4>1200</h4></th>
-												<th><h4>1500</h4></th>
-												<th><h4>1800</h4></th>
-												<th><h4>2100</h4></th>
-												
-											</tr>
-											<tr>
-												<td class="temp_circle_warm">10c</td>
-												<td class="temp_circle_hot">34c</td>
-												<td class="temp_circle_warm">18c</td>
-												<td class="temp_circle_normal">8c</td>
-												<td class="temp_circle_cold">-1c</td>
-												<td class="temp_circle_hot">30c</td>
-												<td class="temp_circle_cold">-4c</td>
-												<td class="temp_circle_normal">10c</td>
-											</tr>
-											<tr>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-											</tr>
-											<tr>
-												<td class"fo_summary"><img src="images/icon-set/PNG/50x50/sunny.png" alt="..." class="img-circle"><p>Sunny</p></td>
-												<td class"fo_summary"><img src="images/icon-set/GIF/50x50/fair.gif" alt="..." class="img-circle"><p>Fair</p></td>
-												<td class"fo_summary"><img src="images/icon-set/GIF/50x50/snow.gif" alt="..." class="img-circle"><p>Snow</p></td>
-												<td class"fo_summary"><img src="images/icon-set/GIF/50x50/hazy.gif" alt="..." class="img-circle"><p>Hazy</p></td>
-												<td class"fo_summary"><img src="images/icon-set/GIF/50x50/fog.gif" alt="..." class="img-circle"><p>Fog</p></td>
-												<td class"fo_summary"><img src="images/icon-set/GIF/50x50/p-c-rain.gif" alt="..." class="img-circle"><p>Rain</p></td>
-												<td class"fo_summary"><img src="images/icon-set/GIF/50x50/cloudy.gif" alt="..." class="img-circle"><p>Couldy</p></td>
-												<td class"fo_summary"><img src="images/icon-set/GIF/50x50/blizzard.gif" alt="..." class="img-circle"><p>Blizzard</p></td>
-											</tr>
+								
+										
 										</table>
 									</div>
 								</div>
@@ -226,48 +109,9 @@
 								<div class="row clearfix">
 									<h4>ForecastIO <img src="images/5-rating.jpg"></h4>		
 									<div class="table-responsive">
-										<table class="table">
-											<tr>
-												<th><h4>0000</h4></th>
-												<th><h4>0300</h4></th>
-												<th><h4>0600</h4></th>
-												<th><h4>0900</h4></th>
-												<th><h4>1200</h4></th>
-												<th><h4>1500</h4></th>
-												<th><h4>1800</h4></th>
-												<th><h4>2100</h4></th>
-											
-											</tr>
-											<tr>
-												<td class="temp_circle_warm">10c</td>
-												<td class="temp_circle_hot">34c</td>
-												<td class="temp_circle_warm">18c</td>
-												<td class="temp_circle_normal">8c</td>
-												<td class="temp_circle_cold">-1c</td>
-												<td class="temp_circle_hot">30c</td>
-												<td class="temp_circle_cold">-4c</td>
-												<td class="temp_circle_normal">10c</td>
-											</tr>
-											<tr>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-											</tr>
-											<tr>
-												<td class"mo_summary"><img src="images/icon-set/PNG/50x50/sunny.png" alt="..." class="img-circle"><p>Sunny</p></td>
-												<td class"mo_summary"><img src="images/icon-set/GIF/50x50/fair.gif" alt="..." class="img-circle"><p>Fair</p></td>
-												<td class"mo_summary"><img src="images/icon-set/GIF/50x50/snow.gif" alt="..." class="img-circle"><p>Snow</p></td>
-												<td class"mo_summary"><img src="images/icon-set/GIF/50x50/hazy.gif" alt="..." class="img-circle"><p>Hazy</p></td>
-												<td class"mo_summary"><img src="images/icon-set/GIF/50x50/fog.gif" alt="..." class="img-circle"><p>Fog</p></td>
-												<td class"mo_summary"><img src="images/icon-set/GIF/50x50/p-c-rain.gif" alt="..." class="img-circle"><p>Rain</p></td>
-												<td class"mo_summary"><img src="images/icon-set/GIF/50x50/cloudy.gif" alt="..." class="img-circle"><p>Couldy</p></td>
-												<td class"mo_summary"><img src="images/icon-set/GIF/50x50/blizzard.gif" alt="..." class="img-circle"><p>Blizzard</p></td>
-											</tr>
+										<table class="table" id="forecastio_forecast_tomorrow_table">
+								
+									
 											
 										</table>
 									</div>
@@ -303,47 +147,8 @@
 											<div class="panel-body">
 												<div class="tab-content">
 													<div class="table-responsive">
-														<table class="table">
-															<tr>
-																<th><h4>Source</h4></th>
-																<th><h4>0000</h4></th>
-																<th><h4>0300</h4></th>
-																<th><h4>0600</h4></th>
-																<th><h4>0900</h4></th>
-																<th><h4>1200</h4></th>
-																<th><h4>1500</h4></th>
-																<th><h4>1800</h4></th>
-																<th><h4>2100</h4></th>
-																<th><h4>Rankings</h4></th>
-															</tr>
-															<tr>
-																<td class="mo_logo"><img src="images/met-office-logo.png"><p>Met Office</p></td>																
-																<td class="temp_circle_warm">10c</td>
-																<td class="temp_circle_hot">34c</td>
-																<td class="temp_circle_warm">18c</td>
-																<td class="temp_circle_normal">8c</td>
-																<td class="temp_circle_cold">-1c</td>
-																<td class="temp_circle_hot">30c</td>
-																<td class="temp_circle_cold">-4c</td>
-																<td class="temp_circle_normal">10c</td>
-																<td class="rankings"><td>
-																
-															</tr>
-															
-															<tr>
-																<td class="fo_logo"><img src="images/forecast-logo.jpg"><p>ForecastIO</p></td>
-																<td class="temp_circle_warm">10c</td>
-																<td class="temp_circle_hot">34c</td>
-																<td class="temp_circle_warm">18c</td>
-																<td class="temp_circle_normal">8c</td>
-																<td class="temp_circle_cold">-1c</td>
-																<td class="temp_circle_hot">30c</td>
-																<td class="temp_circle_cold">-4c</td>
-																<td class="temp_circle_normal">10c</td>
-																<td class="rankings"><td>
-															</tr>
-														</div>
-													</div>
+														<table class="table"  id="temp_comparison_today_table">
+													
 												</table>
 											</div>
 										</div>
@@ -358,43 +163,8 @@
 									<div class="panel-body">
 										<div class="tab-content">
 											<div class="table-responsive">
-												<table class="table">
-													<tr>
-														<th><h4>Source</h4></th>
-														<th><h4>0000</h4></th>
-														<th><h4>0300</h4></th>
-														<th><h4>0600</h4></th>
-														<th><h4>0900</h4></th>
-														<th><h4>1200</h4></th>
-														<th><h4>1500</h4></th>
-														<th><h4>1800</h4></th>
-														<th><h4>2100</h4></th>
-														<th><h4>Rankings</h4></th>
-													</tr>
-													<tr>
-														<td class="mo_logo"><img src="images/met-office-logo.png"><p>Met Office</p></td>
-														<td class="mo_windspeed"><p>20mph</p></td>
-														<td class="mo_windspeed"><p>20mph</p></td>
-														<td class="mo_windspeed"><p>20mph</p></td>
-														<td class="mo_windspeed"><p>20mph</p></td>
-														<td class="mo_windspeed"><p>20mph</p></td>
-														<td class="mo_windspeed"><p>20mph</p></td>
-														<td class="mo_windspeed"><p>20mph</p></td>
-														<td class="mo_windspeed"><p>20mph</p></td>
-														<td class="rankings"><td>
-													</tr>
-													<tr>
-														<td class="fo_logo"><img src="images/forecast-logo.jpg"><p>ForecastIO</p></td>
-														<td class="fo_windspeed"><p>20mph</p></td>
-														<td class="fo_windspeed"><p>20mph</p></td>
-														<td class="fo_windspeed"><p>20mph</p></td>
-														<td class="fo_windspeed"><p>20mph</p></td>
-														<td class="fo_windspeed"><p>20mph</p></td>
-														<td class="fo_windspeed"><p>20mph</p></td>
-														<td class="fo_windspeed"><p>20mph</p></td>
-														<td class="fo_windspeed"><p>20mph</p></td>
-														<td class="rankings"><td>
-													</tr>
+												<table class="table" id="windspeed_comparison_today_table">
+													
 												</table>
 											</div>
 										</div>
@@ -409,43 +179,8 @@
 									<div class="panel-body">
 										<div class="tab-content">
 											<div class="table-responsive">
-												<table class="table">
-													<tr>
-														<th><h4>Source</h4></th>
-														<th><h4>0000</h4></th>
-														<th><h4>0300</h4></th>
-														<th><h4>0600</h4></th>
-														<th><h4>0900</h4></th>
-														<th><h4>1200</h4></th>
-														<th><h4>1500</h4></th>
-														<th><h4>1800</h4></th>
-														<th><h4>2100</h4></th>
-														<th><h4>Rankings</h4></th>
-													</tr>
-													<tr>
-														<td class="mo_logo"><img src="images/met-office-logo.png"><p>Met Office</p></td>
-														<td class="mo_summary"><img src="images/icon-set/PNG/50x50/sunny.png" alt="..." class="img-circle"><p>Sunny</p></td>
-														<td class="mo_summary"><img src="images/icon-set/GIF/50x50/fair.gif" alt="..." class="img-circle"><p>Fair</p></td>
-														<td class="mo_summary"><img src="images/icon-set/GIF/50x50/snow.gif" alt="..." class="img-circle"><p>Snow</p></td>
-														<td class="mo_summary"><img src="images/icon-set/GIF/50x50/hazy.gif" alt="..." class="img-circle"><p>Hazy</p></td>
-														<td class="mo_summary"><img src="images/icon-set/GIF/50x50/fog.gif" alt="..." class="img-circle"><p>Fog</p></td>
-														<td class="mo_summary"><img src="images/icon-set/GIF/50x50/p-c-rain.gif" alt="..." class="img-circle"><p>Rain</p></td>
-														<td class="mo_summary"><img src="images/icon-set/GIF/50x50/cloudy.gif" alt="..." class="img-circle"><p>Couldy</p></td>
-														<td class="mo_summary"><img src="images/icon-set/GIF/50x50/blizzard.gif" alt="..." class="img-circle"><p>Blizzard</p></td>
-													<td class="rankings"><td>
-													</tr>
-													<tr>
-														<td class="fo_logo"><img src="images/forecast-logo.jpg"><p>ForecastIO</p></td>
-														<td class="fo_summary"><img src="images/icon-set/PNG/50x50/sunny.png" alt="..." class="img-circle"><p>Sunny</p></td>
-														<td class="fo_summary"><img src="images/icon-set/GIF/50x50/fair.gif" alt="..." class="img-circle"><p>Fair</p></td>
-														<td class="fo_summary"><img src="images/icon-set/GIF/50x50/snow.gif" alt="..." class="img-circle"><p>Snow</p></td>
-														<td class="fo_summary"><img src="images/icon-set/GIF/50x50/hazy.gif" alt="..." class="img-circle"><p>Hazy</p></td>
-														<td class="fo_summary"><img src="images/icon-set/GIF/50x50/fog.gif" alt="..." class="img-circle"><p>Fog</p></td>
-														<td class="fo_summary"><img src="images/icon-set/GIF/50x50/p-c-rain.gif" alt="..." class="img-circle"><p>Rain</p></td>
-														<td class="fo_summary"><img src="images/icon-set/GIF/50x50/cloudy.gif" alt="..." class="img-circle"><p>Couldy</p></td>
-														<td class="fo_summary"><img src="images/icon-set/GIF/50x50/blizzard.gif" alt="..." class="img-circle"><p>Blizzard</p></td>
-													<td class="rankings"><td>
-													</tr>
+												<table class="table" id="summary_comparison_today_table">
+													
 												</table>
 											</div>
 										</div>
@@ -463,46 +198,8 @@
 									<div class="panel-body">
 										<div class="tab-content">
 											<div class="table-responsive">
-												<table class="table">
-													<tr>
-														<th><h4>Source</h4></th>
-														<th><h4>0000</h4></th>
-														<th><h4>0300</h4></th>
-														<th><h4>0600</h4></th>
-														<th><h4>0900</h4></th>
-														<th><h4>1200</h4></th>
-														<th><h4>1500</h4></th>
-														<th><h4>1800</h4></th>
-														<th><h4>2100</h4></th>
-														<th><h4>Rankings</h4></th>
-													</tr>
-													<tr>
-														<td class="mo_logo"><img src="images/met-office-logo.png"><p>Met Office</p></td>
-																
-																<td class="temp_circle_warm">10c</td>
-																<td class="temp_circle_hot">34c</td>
-																<td class="temp_circle_warm">18c</td>
-																<td class="temp_circle_normal">8c</td>
-																<td class="temp_circle_cold">-1c</td>
-																<td class="temp_circle_hot">30c</td>
-																<td class="temp_circle_cold">-4c</td>
-																<td class="temp_circle_normal">10c</td>
-																<td class="rankings"><td>
-													</tr>
+												<table class="table" id="temp_comparison_tomorrow_table">
 													
-													<tr>
-														<td class="fo_logo"><img src="images/forecast-logo.jpg"><p>ForecastIO</p></td>
-																
-																<td class="temp_circle_warm">10c</td>
-																<td class="temp_circle_hot">34c</td>
-																<td class="temp_circle_warm">18c</td>
-																<td class="temp_circle_normal">8c</td>
-																<td class="temp_circle_cold">-1c</td>
-																<td class="temp_circle_hot">30c</td>
-																<td class="temp_circle_cold">-4c</td>
-																<td class="temp_circle_normal">10c</td>
-																<td class="rankings"><td>
-													</tr>
 												</div>
 											</div>
 										</table>
@@ -519,43 +216,8 @@
 							<div class="panel-body">
 								<div class="tab-content">
 									<div class="table-responsive">
-										<table class="table">
-											<tr>
-												<th><h4>Source</h4></th>
-												<th><h4>0000</h4></th>
-												<th><h4>0300</h4></th>
-												<th><h4>0600</h4></th>
-												<th><h4>0900</h4></th>
-												<th><h4>1200</h4></th>
-												<th><h4>1500</h4></th>
-												<th><h4>1800</h4></th>
-												<th><h4>2100</h4></th>
-												<th><h4>Rankings</h4></th>
-											</tr>
-											<tr>
-												<td class="mo_logo"><img src="images/met-office-logo.png"><p>Met Office</p></td>
-												<td class="mo_windspeed"><p>20mph</p></td>
-												<td class="mo_windspeed"><p>20mph</p></td>
-												<td class="mo_windspeed"><p>20mph</p></td>
-												<td class="mo_windspeed"><p>20mph</p></td>
-												<td class="mo_windspeed"><p>20mph</p></td>
-												<td class="mo_windspeed"><p>20mph</p></td>
-												<td class="mo_windspeed"><p>20mph</p></td>
-												<td class="mo_windspeed"><p>20mph</p></td>
-												<td class="rankings"><td>
-											</tr>
-											<tr>
-												<td class="fo_logo"><img src="images/forecast-logo.jpg"><p>ForecastIO</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="fo_windspeed"><p>20mph</p></td>
-												<td class="rankings"><td>
-											</tr>
+										<table class="table" id="windspeed_comparison_tomorrow_table">
+										
 										</table>
 									</div>
 								</div>
@@ -570,43 +232,8 @@
 							<div class="panel-body">
 								<div class="tab-content">
 									<div class="table-responsive">
-										<table class="table">
-											<tr>
-												<th><h4>Source</h4></th>
-												<th><h4>0000</h4></th>
-												<th><h4>0300</h4></th>
-												<th><h4>0600</h4></th>
-												<th><h4>0900</h4></th>
-												<th><h4>1200</h4></th>
-												<th><h4>1500</h4></th>
-												<th><h4>1800</h4></th>
-												<th><h4>2100</h4></th>
-												<th><h4>Rankings</h4></th>
-											</tr>
-											<tr>
-												<td class="mo_logo"><img src="images/met-office-logo.png">Met Office</td>
-												<td class="mo_summary"><img src="images/icon-set/PNG/50x50/sunny.png" alt="..." class="img-circle"><p>Sunny</p></td>
-												<td class="mo_summary"><img src="images/icon-set/GIF/50x50/fair.gif" alt="..." class="img-circle"><p>Fair</p></td>
-												<td class="mo_summary"><img src="images/icon-set/GIF/50x50/snow.gif" alt="..." class="img-circle"><p>Snow</p></td>
-												<td class="mo_summary"><img src="images/icon-set/GIF/50x50/hazy.gif" alt="..." class="img-circle"><p>Hazy</p></td>
-												<td class="mo_summary"><img src="images/icon-set/GIF/50x50/fog.gif" alt="..." class="img-circle"><p>Fog</p></td>
-												<td class="mo_summary"><img src="images/icon-set/GIF/50x50/p-c-rain.gif" alt="..." class="img-circle"><p>Rain</p></td>
-												<td class="mo_summary"><img src="images/icon-set/GIF/50x50/cloudy.gif" alt="..." class="img-circle"><p>Couldy</p></td>
-												<td class="mo_summary"><img src="images/icon-set/GIF/50x50/blizzard.gif" alt="..." class="img-circle"><p>Blizzard</p></td>
-												<td class="rankings"><td>
-											</tr>
-											<tr>
-												<td class="fo_logo"><img src="images/forecast-logo.jpg"><p>ForecastIO</p></td>
-												<td class="fo_summary"><img src="images/icon-set/PNG/50x50/sunny.png" alt="..." class="img-circle"><p>Sunny</p></td>
-												<td class="fo_summary"><img src="images/icon-set/GIF/50x50/fair.gif" alt="..." class="img-circle"><p>Fair</p></td>
-												<td class="fo_summary"><img src="images/icon-set/GIF/50x50/snow.gif" alt="..." class="img-circle"><p>Snow</p></td>
-												<td class="fo_summary"><img src="images/icon-set/GIF/50x50/hazy.gif" alt="..." class="img-circle"><p>Hazy</p></td>
-												<td class="fo_summary"><img src="images/icon-set/GIF/50x50/fog.gif" alt="..." class="img-circle"><p>Fog</p></td>
-												<td class="fo_summary"><img src="images/icon-set/GIF/50x50/p-c-rain.gif" alt="..." class="img-circle"><p>Rain</p></td>
-												<td class="fo_summary"><img src="images/icon-set/GIF/50x50/cloudy.gif" alt="..." class="img-circle"><p>Couldy</p></td>
-												<td class="fo_summary"><img src="images/icon-set/GIF/50x50/blizzard.gif" alt="..." class="img-circle"><p>Blizzard</p></td>
-												<td class="rankings"><td>
-											</tr>
+										<table class="table" id="summary_comparison_tomorrow_table">
+											
 										</table>
 									</div>
 								</div>
@@ -628,7 +255,8 @@
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-	
+	<script src="js/main.js"></script>
+	<script src="js/date_format.js"></script>
 	<script type="text/javascript">
 		
 		window.currentTab = "tabForecasts";
@@ -661,185 +289,7 @@
 		
 		
 	</script>
-	
-	<script>
-		
-		var geocoder;
-		
-		var parsed_data= {};
-		
-		$(function() {
-			
-			geocoder = new google.maps.Geocoder();
-			
-			$('#location_search_btn').click(function() {
-				var location_name = $('#location_search_name').val();
-				var current_date = new Date();
-				
-				/*search_by_location_name_and_date(location_name, current_date.format("dd-mm-yyyy"), function(data) {
-					
-					parse_data(data);
-					
-				});*/
-				
-				geocoder.geocode( { 'address': location_name}, function(results, status) {
-					if (status == google.maps.GeocoderStatus.OK) {
-						var location = results[0].geometry.location;
-						
-						search_by_location_position_and_date(location.k, location.D, current_date.format("dd-mm-yyyy"), function(data) {
-							
-							parse_data(data);
-							
-						});
-						
-						} else {
-						alert('Geocode was not successful for the following reason: ' + status);
-					}
-				});
-				
-				
-			
-			});
-			
-			$('#timeline button').click(function() {
-			var time_value = $(this).attr('time-value');
-			
-			$('#timeline button').removeClass('btn-primary');
-			$(this	).addClass('btn-primary');
-			$(this	).addClass('btn-default');
-			display_data(time_value, parsed_data);
-			});
-			
-			$('.advancedViewShow').click(function() {
-			var advancedPanel = $(this).parent().find('.advancedTempView');
-			advancedPanel.removeClass('hidden');
-			});
-			});
-			
-			var parse_data = function(data) {
-			var mo_data = {};
-			var fio_data = {};
-			
-			data.forEach(function(item) {
-			var weather_source = item.weather_source;
-			var time = item.time;
-			var temperature = item.temperature;
-			var summary = item.summary;
-			var windspeed = item.windspeed;
-			
-			var data_obj = {
-			time: time,
-			temperature: temperature,
-			summary: summary,
-			windspeed: windspeed
-			};
-			
-			if (weather_source == "MetOffice") {
-			mo_data[time] = data_obj;
-			} else if (weather_source == "ForecastIO") {
-			fio_data[time] = data_obj;
-			}
-			});
-			parsed_data["metoffice"] = mo_data;
-			parsed_data["forecastio"] = fio_data;
-			
-			
-			
-			display_data("0", parsed_data);
-			}
-			
-			
-			var display_data = function(time, data) {
-			
-			
-			
-			$("#mo_temperature").text(data.metoffice[time].temperature+" ℃");
-			$("#mo_windspeed").text(data.metoffice[time].windspeed+" mph");
-			$("#mo_summary").text(data.metoffice[time].summary);
-			
-			$("#fio_temperature").text(data.forecastio[time].temperature+" ℃");
-			$("#fio_windspeed").text(data.forecastio[time].windspeed+" mph");
-			$("#fio_summary").text(data.forecastio[time].summary);
-			
-			
-			
-			
-			};
-			
-			var search_by_location_name_and_date = function(location, date, callback) {
-			var api_url = "locations/by_name/"+location+"/"+date;
-			
-			$.ajax({
-			url: api_url,
-			context: document.body,
-			dateType: "json"
-			}).done(function(data) {
-			
-			
-			if (data.length > 0) {
-			$('#location_name').text(location);
-			callback(data);
-			$('#weather_display').show();
-			$('#no_weather_display').hide();
-			$('error_alert').hide();
-			} else {
-			$('#weather_display').hide();
-			$('#no_weather_display').show();
-			$('#error_alert div').text('We were unable to find any temperature data for your location');
-			$('#error_alert').show();
-			}
-			
-			}).fail(function() {
-			console.log("Search Failed");
-			});
-			}
-			
-			var search_by_location_position_and_date = function(lng, lat, date, callback) {
-			var api_url = "locations/by_position/"+lng+"/"+lat+"/"+date;
-			
-			$.ajax({
-			url: api_url,
-			context: document.body,
-			dateType: "json"
-			}).done(function(data) {
-			
-			console.log(data);
-			
-			if (data.length > 0) {
-			$('#location_name').text(location);
-			callback(data);
-			$('#weather_display').show();
-			$('#no_weather_display').hide();
-			$('error_alert').hide();
-			} else {
-			$('#weather_display').hide();
-			$('#no_weather_display').show();
-			$('#error_alert div').text('We were unable to find any temperature data for your location');
-			$('#error_alert').show();
-			}
-			
-			}).fail(function() {
-			console.log("Search Failed");
-			});
-			}
-			
-			$('.collapse').on('show.bs.collapse', function () {
-			$(this).parent().removeClass("zeroPadding");
-			});
-			
-			$('.collapse').on('hide.bs.collapse', function () {
-			$(this).parent().addClass("zeroPadding");
-			});
-			
-			$('[data-toggle="tooltip"]').tooltip({
-			'placement': 'top'
-			});
-			$('[data-toggle="popover"]').popover({
-			trigger: 'hover',
-			'placement': 'top'
-			});
-			
-			</script>
+
 			
 			</body>
 			
