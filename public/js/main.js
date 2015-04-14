@@ -11,6 +11,47 @@
 	 
  });
  
+ $(function() {
+	if (navigator.geolocation) {
+
+		navigator.geolocation.getCurrentPosition(function (position) {
+		
+		var date = new Date();
+		var today_date = date.format("dd-mm-yyyy");
+		date.setDate(date.getDate() + 1);
+		var tomorrow_date = date.format("dd-mm-yyyy");
+				
+		var api_url = "locations/by_position/"+position.coords.latitude+"/"+position.coords.longitude+"/";
+				
+				$.ajax({
+					url: api_url+today_date,
+					context: document.body,
+					dateType: "json"
+				}).done(function(data) {
+					console.log(today_date);
+					parse_data(true, data);
+				}).fail(function(err) {
+					console.log(err);
+				});
+				
+				$.ajax({
+					url: api_url+tomorrow_date,
+					context: document.body,
+					dateType: "json"
+				}).done(function(data) {
+					console.log('Tomorrow');
+					parse_data(false, data);
+				}).fail(function(err) {
+					console.log(err);
+				});
+				
+		});
+		}
+});
+
+ 
+ 
+ 
 var search_by_location_keyword = function(location_name, callback) {
 			
 		geocoder.geocode( { 'address': location_name}, function(results, status) {
@@ -238,7 +279,7 @@ var search_by_location_keyword = function(location_name, callback) {
 								img_name = 'cloudy.png';
 							break;
 							case 'Overcast':
-								img_name = 'na.png';
+								img_name = 'overcast.png';
 							break;
 							case 'Drizzle':
 								img_name = 'drizzle.png';
@@ -319,7 +360,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						var windspeed_col = $('<td/>').text(windspeed);
 						
 				
-						windspeed_col.addClass('mo_windspeed');
+						windspeed_col.addClass('fo_windspeed');
 					
 						
 						windspeed_fio.append(windspeed_col);
@@ -329,7 +370,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						var summary_col = $('<td/>')
 						
 				
-						windspeed_col.addClass('mo_summary');
+						windspeed_col.addClass('fo_summary');
 					
 						var img = $('<img/>').addClass('img-circle');
 						
@@ -337,7 +378,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						switch (summary) {
 						
-						case 'Sunny day':
+							case 'Sunny':
 								img_name = 'sunny.png';
 							break;
 							case 'Clear night':
@@ -346,29 +387,17 @@ var search_by_location_keyword = function(location_name, callback) {
 							case 'Partly cloudy':
 								img_name = 'partly-cloudy.png';
 							break;
-							case 'Not used':
-								img_name = 'na.png';
-							break;		
-							case 'Mist':
-								img_name = 'na.png';
-							break;
 							case 'Fog':
 								img_name = 'fog.png';
 							break;
 							case 'Cloudy':
 								img_name = 'cloudy.png';
 							break;
-							case 'Overcast':
-								img_name = 'overcast.png';
+							case 'Cloudy night':
+								img_name = 'cloudy-night.png';
 							break;
-							case 'Drizzle':
-								img_name = 'drizzle.png';
-							break;		
-							case 'Light rain':
-								img_name = 'rainy.png';
-							break;
-							case 'Heavy rain':
-								img_name = 'heavy-rain.png';
+							case 'Wind':
+								img_name = 'wind.png';
 							break;
 							case 'Sleet':
 								img_name = 'sleet.png';
@@ -376,17 +405,14 @@ var search_by_location_keyword = function(location_name, callback) {
 							case 'Hail':
 								img_name = 'hail.png';
 							break;		
-							case 'Light snow':
+							case 'Snow':
 								img_name = 'snow.png';
 							break;
-							case 'Heavy snow':
-								img_name = 'blizzard.png';
+							case 'Rain':
+								img_name = 'rainy.png';
 							break;		
 							case 'Thunder':
 								img_name = 'thunder.png';
-							break;
-							case 'Not available':
-								img_name = 'na.png';
 							break;
 						
 						}
@@ -636,7 +662,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						var windspeed_col = $('<td/>').text(windspeed);
 						
 				
-						windspeed_col.addClass('mo_windspeed');
+						windspeed_col.addClass('fo_windspeed');
 					
 						
 						fio_windspeed_row.append(windspeed_col);
@@ -646,7 +672,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						var summary_col = $('<td/>')
 						
 				
-						windspeed_col.addClass('mo_summary');
+						windspeed_col.addClass('fo_summary');
 					
 						var img = $('<img/>').addClass('img-circle');
 						
@@ -654,8 +680,41 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						switch (summary) {
 						
-							case 'Clear':
+							case 'Sunny':
 								img_name = 'sunny.png';
+							break;
+							case 'Clear night':
+								img_name = 'moon.png';
+							break;
+							case 'Partly cloudy':
+								img_name = 'partly-cloudy.png';
+							break;
+							case 'Fog':
+								img_name = 'fog.png';
+							break;
+							case 'Cloudy':
+								img_name = 'cloudy.png';
+							break;
+							case 'Cloudy night':
+								img_name = 'cloudy-night.png';
+							break;
+							case 'Wind':
+								img_name = 'wind.png';
+							break;
+							case 'Sleet':
+								img_name = 'sleet.png';
+							break;
+							case 'Hail':
+								img_name = 'hail.png';
+							break;		
+							case 'Snow':
+								img_name = 'snow.png';
+							break;
+							case 'Rain':
+								img_name = 'rainy.png';
+							break;		
+							case 'Thunder':
+								img_name = 'thunder.png';
 							break;
 						
 						}
