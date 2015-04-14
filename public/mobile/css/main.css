@@ -1,0 +1,276 @@
+h5 {
+	font-size: 1.2em;
+	margin: 0.67em 0;
+	color: #000000;
+	font-weight: bold;
+	text-align: center;
+}
+
+h3 {
+	font-size: 2em;
+	margin: 0.67em 0;
+	color: #000000;
+	text-align: center;
+}
+
+h4{
+	font-size: 1em;
+	margin: 0.67em 0;
+	color: #000000;
+	text-align: center;
+	font-weight: bold;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+	transition: opacity 0.5s 0.5s ease; 
+	opacity: 0;
+}
+
+td.mo_rmse  {
+	border: none;
+}
+
+td.mo_calc_button  {
+	border-top: none !important;
+}
+
+td.hiddenRow  {
+ 	border: 0px solid #ddd !important;
+}
+
+
+td.mo_temperature
+{
+	text-align: center;
+	color: #ffffff;
+	padding:30px !important;
+}
+
+td.temp_circle_hot
+{
+	text-align: center;
+	color: #ffffff;
+	padding:30px 0 !important;
+}
+
+td.temp_circle_warm
+{
+	text-align: center;
+	color: #ffffff;
+	padding:30px 0 !important;
+}
+
+td.temp_circle_cold
+{
+	text-align: center;
+	color: #ffffff;
+	padding:30px 0 !important;
+}
+
+td.temp_circle_normal
+{
+	text-align: center;
+	color: #ffffff;
+	padding:30px 0 !important;
+}
+
+td.mo_windspeed
+{
+	text-align: center;
+	color: #000000;
+	padding-top:30px !important;
+	
+}
+
+td.mo_windspeed p {
+	padding-top:5px;
+}
+
+td.mo_summary p {
+	padding-top:5px;
+}
+
+td.mo_logo p{
+	padding-top:100px 0!important;
+	
+}
+td.fo_temperature
+{
+	color: #ffffff;
+	padding:30px !important;
+}
+
+td.fo_windspeed
+{
+	text-align: center;
+	color: #000000;
+		padding-top:30px !important;
+}
+
+td.fo_windspeed p {
+	padding-top:5px;
+}
+
+td.fo_summary p {
+	padding-top:5px;
+}
+
+tb.rankings {
+	color: #FFFFFF;
+	text-align: center;
+	
+}
+td
+{
+	text-align: center;
+	padding-top:25px;
+}
+
+
+h1 {
+	color: #FFFFFF;
+	text-align: center;
+}
+
+h2{
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.vertical-align {
+    display: flex;
+	padding-left: 40%	;
+}
+
+.clickable
+{
+    cursor: pointer;
+}
+
+.clickable .glyphicon
+{
+    background: rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px
+}
+
+.panel-heading span
+{
+    margin-top: -23px;
+    font-size: 15px;
+    margin-right: -9px;
+}
+a.clickable { color: inherit; }
+a.clickable:hover { text-decoration:none; }
+
+
+.navbar {
+	
+	height: 80px;
+}
+.container .navbar {
+	
+	color: #FFFFFF;
+}
+
+.col-md-4.column {
+	width: 12.5%;
+	
+	
+}
+.page-header {
+	height: 20px;
+	text-align: center;
+	padding-bottom:30px;
+}
+
+.table {
+	border : 0;
+}
+
+table {
+	margin-bottom: 0px !important;
+}
+.td {
+	
+	border: none;
+}
+
+.pull-right {
+	padding-top:25px;
+}
+.rankings {
+	
+	background-image:  url("../images/5-rating.jpg");
+	background-repeat: no-repeat;
+	background-position-x: center;
+    background-position-y: center;
+}
+.mo_windspeed {
+	background-image:  url("../images/windspeed.png");
+	background-repeat: no-repeat;
+	background-position-x: center;
+}
+
+.fo_temperature {
+	background-image:  url("../images/temp_cold.png");
+	background-repeat: no-repeat;
+	background-position-y: center;
+	background-position-x: center;
+}
+
+.fo_windspeed {
+	background-image:  url("../images/windspeed.png");
+	background-repeat: no-repeat;
+	background-position-x: center;
+}
+
+.temp_circle_hot {
+	background-image:  url("../images/temp_hot.png");
+	background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+	padding: 30px 0 !important;
+	
+}
+
+.temp_circle_warm {
+	background-image:  url("../images/temp_warm.png");
+	background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+	padding: 30px 0 !important;
+}
+
+
+.temp_circle_normal {
+	background-image:  url("../images/temp_normal.png");
+	background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;	
+	
+}
+
+.temp_circle_cold {
+	background-image:  url("../images/temp_cold.png");
+	background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+	
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	border-bottom: 1px;
+	border-radius: 4px;
+}
+
+/********************************************************************/
+/*** PANEL MET OFFICE ***/
+
+
+/********************************************************************/
+/*** PANELForecastIO ***/
+
+/********************************************************************/
+/*** PANEL PRIMARY ***/
