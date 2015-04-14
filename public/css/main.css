@@ -236,11 +236,7 @@ table {
 }
 
 .temp_circle_warm {
-	background-image:  url("../images/temp_warm.png");
-	background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: center;
-	padding: 30px 0 !important;
+
 }
 
 

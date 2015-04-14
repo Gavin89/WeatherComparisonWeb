@@ -56,14 +56,8 @@ var search_by_location_keyword = function(location_name, callback) {
 				} else {
 					alert('Geocode was not successful for the following reason: ' + status);
 				}
-		});
-	
-	
-			
-			
+		});			
 };
-
-
 		
 		var parsed_data= {};
 		
@@ -240,6 +234,51 @@ var search_by_location_keyword = function(location_name, callback) {
 							case 'Sunny day':
 								img_name = 'sunny.png';
 							break;
+							case 'Clear night':
+								img_name = 'moon.png'
+							break;														
+							case 'Partly cloudy':
+								img_name = 'partly-cloudy.png';
+							break;
+							case 'Not available':
+								img_name = 'na.png'
+							break;							
+							case 'Mist':
+								img_name = 'sunny.png';
+							break;
+							case 'Fog':
+								img_name = 'fog.png'
+							break;							
+							case 'Cloudy':
+								img_name = 'cloudy.png';
+							break;
+							case 'Overcast':
+								img_name = 'moon.png'
+							break;							
+							case 'Drizzle':
+								img_name = 'drizzle.png'
+							break;
+							case 'Light rain':
+								img_name = 'rainy.png'
+							break;														
+							case 'Heavy rain':
+								img_name = 'heavy_rain.png'
+							break;
+							case 'Sleet':
+								img_name = 'sleet.png'
+							break;							
+							case 'Hail':
+								img_name = 'hail.png'
+							break;							
+							case 'Light snow':
+								img_name = 'snow.png'
+							break;	
+							case 'Heavy snow':
+								img_name = 'blizzard.png'
+							break;							
+							case 'Thunder':
+								img_name = 'thunder-storm.png'
+							break;
 						
 						}
 			
@@ -317,8 +356,38 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						switch (summary) {
 						
-							case 'Clear':
+							case 'Sunny':
 								img_name = 'sunny.png';
+							break;
+							case 'Clear night':
+								img_name = 'moon.png'
+							break;														
+							case 'Partly cloudy':
+								img_name = 'partly-cloudy.png';
+							break;							
+							case 'Fog':
+								img_name = 'fog.png'
+							break;							
+							case 'Cloudy':
+								img_name = 'cloudy.png';
+							break;
+							case 'Rain':
+								img_name = 'rainy.png'
+							break;														
+							case 'Sleet':
+								img_name = 'sleet.png'
+							break;							
+							case 'Hail':
+								img_name = 'hail.png'
+							break;							
+							case 'Snow':
+								img_name = 'snow.png'
+							break;							
+							case 'Thunder':
+								img_name = 'thunder-storm.png'
+							break;
+							case 'Cloudy night':
+								img_name = 'cloudy-night.png'
 							break;
 						
 						}
