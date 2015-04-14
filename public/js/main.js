@@ -11,13 +11,8 @@
 	 
  });
  
-
- 
 var search_by_location_keyword = function(location_name, callback) {
-	
 			
-		
-		
 		geocoder.geocode( { 'address': location_name}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				
@@ -60,9 +55,7 @@ var search_by_location_keyword = function(location_name, callback) {
 };
 		
 		var parsed_data= {};
-		
-
-			
+					
 			var parse_data = function(today, data) {
 			var mo_data = {};
 			var fio_data = {};
@@ -89,24 +82,17 @@ var search_by_location_keyword = function(location_name, callback) {
 			});
 			parsed_data["metoffice"] = mo_data;
 			parsed_data["forecastio"] = fio_data;
-			
-			
-			
+					
 			display_data(today, parsed_data);
 			}
-			
-			
+					
 			var display_data = function(today, data) {
-			
-				
-			
+					
 				populate_forecast(today, data);
 				populate_comparisons(today, data);	
-				
-			
+						
 			};
-			
-			
+					
 			var populate_comparisons = function(isToday, data) {
 			
 				var getLogoEl = function(metoffice) {
@@ -119,8 +105,7 @@ var search_by_location_keyword = function(location_name, callback) {
 					} else {
 						img.attr('src', 'images/forecast-logo.jpg');
 						p.text('ForecastIO');
-					}
-					
+					}					
 					return td;
 				}
 				
@@ -231,53 +216,56 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						switch (summary) {
 						
-							case 'Sunny day':
+						case 'Sunny day':
 								img_name = 'sunny.png';
 							break;
 							case 'Clear night':
-								img_name = 'moon.png'
-							break;														
+								img_name = 'moon.png';
+							break;
 							case 'Partly cloudy':
 								img_name = 'partly-cloudy.png';
 							break;
-							case 'Not available':
-								img_name = 'na.png'
-							break;							
+							case 'Not used':
+								img_name = 'na.png';
+							break;		
 							case 'Mist':
-								img_name = 'sunny.png';
+								img_name = 'na.png';
 							break;
 							case 'Fog':
-								img_name = 'fog.png'
-							break;							
+								img_name = 'fog.png';
+							break;
 							case 'Cloudy':
 								img_name = 'cloudy.png';
 							break;
 							case 'Overcast':
-								img_name = 'moon.png'
-							break;							
-							case 'Drizzle':
-								img_name = 'drizzle.png'
+								img_name = 'na.png';
 							break;
+							case 'Drizzle':
+								img_name = 'drizzle.png';
+							break;		
 							case 'Light rain':
-								img_name = 'rainy.png'
-							break;														
+								img_name = 'rainy.png';
+							break;
 							case 'Heavy rain':
-								img_name = 'heavy_rain.png'
+								img_name = 'heavy-rain.png';
 							break;
 							case 'Sleet':
-								img_name = 'sleet.png'
-							break;							
+								img_name = 'sleet.png';
+							break;
 							case 'Hail':
-								img_name = 'hail.png'
-							break;							
+								img_name = 'hail.png';
+							break;		
 							case 'Light snow':
-								img_name = 'snow.png'
-							break;	
+								img_name = 'snow.png';
+							break;
 							case 'Heavy snow':
-								img_name = 'blizzard.png'
-							break;							
+								img_name = 'blizzard.png';
+							break;		
 							case 'Thunder':
-								img_name = 'thunder-storm.png'
+								img_name = 'thunder.png';
+							break;
+							case 'Not available':
+								img_name = 'na.png';
 							break;
 						
 						}
@@ -291,14 +279,9 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 					
 				});
-				
-				
-				
+								
 				var index = -3;
 					for (var i = 0; i < Object.keys(fio_data).length; i++) {
-						
-						
-					
 						
 						index += 3;
 						if (index > 21) {
@@ -313,8 +296,6 @@ var search_by_location_keyword = function(location_name, callback) {
 							summary_fio.append($('<td/>'));
 							continue;
 						}
-						
-						
 						
 						//Temperature
 						var temp = value.temperature;
@@ -356,38 +337,56 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						switch (summary) {
 						
-							case 'Sunny':
+						case 'Sunny day':
 								img_name = 'sunny.png';
 							break;
 							case 'Clear night':
-								img_name = 'moon.png'
-							break;														
+								img_name = 'moon.png';
+							break;
 							case 'Partly cloudy':
 								img_name = 'partly-cloudy.png';
-							break;							
+							break;
+							case 'Not used':
+								img_name = 'na.png';
+							break;		
+							case 'Mist':
+								img_name = 'na.png';
+							break;
 							case 'Fog':
-								img_name = 'fog.png'
-							break;							
+								img_name = 'fog.png';
+							break;
 							case 'Cloudy':
 								img_name = 'cloudy.png';
 							break;
-							case 'Rain':
-								img_name = 'rainy.png'
-							break;														
-							case 'Sleet':
-								img_name = 'sleet.png'
-							break;							
-							case 'Hail':
-								img_name = 'hail.png'
-							break;							
-							case 'Snow':
-								img_name = 'snow.png'
-							break;							
-							case 'Thunder':
-								img_name = 'thunder-storm.png'
+							case 'Overcast':
+								img_name = 'na.png';
 							break;
-							case 'Cloudy night':
-								img_name = 'cloudy-night.png'
+							case 'Drizzle':
+								img_name = 'drizzle.png';
+							break;		
+							case 'Light rain':
+								img_name = 'rainy.png';
+							break;
+							case 'Heavy rain':
+								img_name = 'heavy-rain.png';
+							break;
+							case 'Sleet':
+								img_name = 'sleet.png';
+							break;
+							case 'Hail':
+								img_name = 'hail.png';
+							break;		
+							case 'Light snow':
+								img_name = 'snow.png';
+							break;
+							case 'Heavy snow':
+								img_name = 'blizzard.png';
+							break;		
+							case 'Thunder':
+								img_name = 'thunder.png';
+							break;
+							case 'Not available':
+								img_name = 'na.png';
 							break;
 						
 						}
@@ -504,8 +503,57 @@ var search_by_location_keyword = function(location_name, callback) {
 							case 'Sunny day':
 								img_name = 'sunny.png';
 							break;
+							case 'Clear night':
+								img_name = 'moon.png';
+							break;
+							case 'Partly cloudy':
+								img_name = 'partly-cloudy.png';
+							break;
+							case 'Not used':
+								img_name = 'na.png';
+							break;		
+							case 'Mist':
+								img_name = 'na.png';
+							break;
+							case 'Fog':
+								img_name = 'fog.png';
+							break;
+							case 'Cloudy':
+								img_name = 'cloudy.png';
+							break;
+							case 'Overcast':
+								img_name = 'na.png';
+							break;
+							case 'Drizzle':
+								img_name = 'drizzle.png';
+							break;		
+							case 'Light rain':
+								img_name = 'rainy.png';
+							break;
+							case 'Heavy rain':
+								img_name = 'heavy-rain.png';
+							break;
+							case 'Sleet':
+								img_name = 'sleet.png';
+							break;
+							case 'Hail':
+								img_name = 'hail.png';
+							break;		
+							case 'Light snow':
+								img_name = 'snow.png';
+							break;
+							case 'Heavy snow':
+								img_name = 'blizzard.png';
+							break;		
+							case 'Thunder':
+								img_name = 'thunder.png';
+							break;
+							case 'Not available':
+								img_name = 'na.png';
+							break;
 						
 						}
+					
 			
 						img.attr('src', 'images/icon-set/PNG/50x50/'+img_name);
 						
