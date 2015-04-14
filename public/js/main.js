@@ -359,7 +359,7 @@ var search_by_location_keyword = function(location_name, callback) {
 								img_name = 'cloudy.png';
 							break;
 							case 'Overcast':
-								img_name = 'na.png';
+								img_name = 'overcast.png';
 							break;
 							case 'Drizzle':
 								img_name = 'drizzle.png';
