@@ -124,6 +124,7 @@ td
 {
 	text-align: center;
 	padding-top:25px;
+	font-weight: bold;
 }
 
 
@@ -195,6 +196,7 @@ table {
 .td {
 	
 	border: none;
+	
 }
 
 .pull-right {

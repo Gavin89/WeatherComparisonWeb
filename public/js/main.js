@@ -220,7 +220,7 @@ var search_by_location_keyword = function(location_name, callback) {
 				$.each(metoffice_data, function(index, value) {
 					//Temperature
 						var temp = value.temperature;
-						var temp_col = $('<td/>').text(temp);
+						var temp_col = $('<td/>').text(temp+"\u00B0" + "C");
 						
 						if (temp < 0) {
 							temp_col.addClass('temp_circle_cold');
@@ -236,7 +236,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Windspeed
 						var windspeed = value.windspeed;
-						var windspeed_col = $('<td/>').text(windspeed);
+							var windspeed_col = $('<td/>').text(windspeed+'mph');
 						
 				
 						windspeed_col.addClass('mo_windspeed');
@@ -357,7 +357,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Windspeed
 						var windspeed = value.windspeed;
-						var windspeed_col = $('<td/>').text(windspeed);
+							var windspeed_col = $('<td/>').text(windspeed+'mph');
 						
 				
 						windspeed_col.addClass('fo_windspeed');
@@ -489,7 +489,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Temperature
 						var temp = value.temperature;
-						var temp_col = $('<td/>').text(temp);
+						var temp_col = $('<td/>').text(temp+"\u00B0" + "C");
 						
 						if (temp < 0) {
 							temp_col.addClass('temp_circle_cold');
@@ -505,7 +505,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Windspeed
 						var windspeed = value.windspeed;
-						var windspeed_col = $('<td/>').text(windspeed);
+						var windspeed_col = $('<td/>').text(windspeed+'mph');
 						
 				
 						windspeed_col.addClass('mo_windspeed');
@@ -659,7 +659,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Windspeed
 						var windspeed = value.windspeed;
-						var windspeed_col = $('<td/>').text(windspeed);
+					var windspeed_col = $('<td/>').text(windspeed+'mph');
 						
 				
 						windspeed_col.addClass('fo_windspeed');
