@@ -526,7 +526,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						switch (summary) {
 						
-							case 'Sunny day':
+							case 'Sunny':
 								img_name = 'sunny.png';
 							break;
 							case 'Clear night':
