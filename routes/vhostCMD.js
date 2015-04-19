@@ -1,13 +1,6 @@
-/**
- * the vhostModel represent the result of executing of the folowing shell command:
- * ./bin/Shellvhost.sh -p myprojects -H prestashop -d "fr|com|tk" -f ous -c prestashop -m ous
- *
- * @module      :: Routes
- * @description :: Maps routes and actions
- * @author		:: Achraf Ben Younes 
- */
 
-var vhost = require('../models/locations.js');
+
+var vhost = require('../models/calculations.js');
 
 module.exports = function(app) {
 

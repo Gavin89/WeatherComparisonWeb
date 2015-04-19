@@ -1,8 +1,3 @@
-/*
- * Main App file App.js
- * @author Achraf Ben Younes
- */
-
 
 // Dependencies requirements, Express 4
 var express        = require('express');
@@ -13,6 +8,7 @@ var mongoose       = require("mongoose");
 var app            = express();
 var fs 			   = require('fs');	
 var locations      = require('./models/locations');
+var calculations      = require('./models/calculations');
 
 app.use(express.static(__dirname + '/public')); 	// set the static files location
 app.use(morgan('dev')); 					// log every request to the console
@@ -34,6 +30,7 @@ app.listen(8080);
 console.log('Listening on port 8080'); 			
 
 var Location = mongoose.model('Location', Location);
+var Calculation = mongoose.model('Calculation', Calculation);
 
 app.get('/locations/by_name/:location_name/:date', function(req, res) {
 Location.find({location_name: req.params.location_name, date: req.params.date}, function(error, location){
@@ -49,17 +46,7 @@ Location.find({location_name: req.params.location_name, date: req.params.date}, 
 });
 
 app.get('/locations/by_position/:lng/:lat/:date', function(req, res) {
-/**
-Location.find({longitude: req.params.lng, latitude: req.params.lat}, function(error, location){
-    if(error){
-        res.json(error);
-    }
-    else if(location == null){
-        res.json('no such location')
-    } else {
-    	res.send(location)
-    }
-});**/
+
 var query =  {loc : { $near : [  req.params.lat,req.params.lng], $maxDistance: 2}, date: req.params.date};
 
 Location.find( query, function(error, location) {
@@ -73,3 +60,23 @@ Location.find( query, function(error, location) {
     }
 });
 });
+
+app.get('/calculations/by_position/:lat/:lng/:date', function(req, res) {
+
+var query1 =  {loc : { $near : [ req.params.lng, req.params.lat], $maxDistance: 2}, date: req.params.date};
+
+Calculation.find(query1, function(error, calculation) {
+
+
+    if(error){
+        res.json(error);
+    }
+    else if(calculation == null){
+        res.json('no such calculation')
+    } else {
+        console.log(query1)
+        res.send(calculation)
+    }
+});
+});
+

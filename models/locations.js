@@ -1,11 +1,3 @@
-/**
- * the VhostManagerModel represent the result of executing of the folowing shell command:
- * ./bin/ShellVhostManager.sh -p myprojects -H prestashop -d "fr|com|tk" -f ous -c prestashop -m ous
- *
- * @module      :: Model
- * @description :: Represent data model for the exec shell command
- * @author		:: Achraf Ben Younes
- */
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
