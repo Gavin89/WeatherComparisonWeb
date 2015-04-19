@@ -23,20 +23,7 @@
 				
 		var api_url = "locations/by_position/"+position.coords.latitude+"/"+position.coords.longitude+"/";
 		var api_calc_url = "calculations/by_position/"+position.coords.latitude+"/"+position.coords.longitude+"/";
-		// console.log(api_calc_url);
-		// console.log(api_url);
-		    geocoder = new google.maps.Geocoder();
-   		    var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-   		    geocoder.geocode({'latLng': latlng}, function(results, status) {
-    	 		 if (status == google.maps.GeocoderStatus.OK) {
-    	 			locationTitle = $('#location_name');
-    	 			locationTitle.empty();
-    	 		 	 locationTitle.append(results[2].address_components[0].long_name + ", " + results[2].address_components[1].long_name);
-    	 		 	}
-                 else {
-                        alert("Geocoder failed due to: " + status);
-                       }
-             });
+
 				
 				$.ajax({
 					url: api_url+today_date,
