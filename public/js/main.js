@@ -165,6 +165,8 @@ var search_by_location_keyword = function(location_name, callback) {
 			var parsed_calculations= {};
 
 			var parse_calculations = function(today, data) {
+			
+	
 			var mo_data_calc = {};
 			var fio_data_calc = {};
 			
@@ -180,16 +182,31 @@ var search_by_location_keyword = function(location_name, callback) {
 			};
 			
 			if (weather_source1 == "MetOffice") {
-			mo_data_calc[time] = calc_obj;
+				if (today) {
+					display_rating($('.metofficeRatingToday'), rmse);
+				} else {
+					display_rating($('.metofficeRatingTomorrow'), rmse);
+				
+				}
 			} else if (weather_source1 == "ForecastIO") {
-			fio_data_calc[time] = calc_obj;
+				if (today) {
+					display_rating($('.fioRatingToday'), rmse);
+				} else {
+					display_rating($('.fioRatingTomorrow'), rmse);
+				
+				}
 			}
 			});
-			parsed_calculations["metoffice"] = mo_data_calc;
-			parsed_calculations["forecastio"] = fio_data_calc;
-					
-			populate_ratings(today, parsed_calculations);
+		
 			}
+			
+			var display_rating = function(el, rating) {
+				el.empty();
+				var img = $('<img/');
+				img.attr('src', 'images/'+rating+'-rating.jpg');
+				el.append(img);
+			}
+			
 					
 			var display_data = function(today, data) {
 					
@@ -198,47 +215,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 			};
 
-			var populate_ratings = function(today,data){
 
-						//Rating
-						var rating_col = $('<td/>');
-						var rmse = data.rmse;
-						console.log(data);
-						rating_col.text(rmse + 'Rating Here');
-						var summary_fio = $('<tr/>');
-						summary_fio.append(rating_col);
-						
-						//Rating
-						var rating_col = $('<td/>');
-						rating_col.text('Rating Here');
-						var windspeed_fio = $('<tr/>');
-						windspeed_fio.append(rating_col);
-						
-						//Rating
-						var rating_col = $('<td/>');
-						rating_col.text('Rating Here');
-						var temp_fio = $('<tr/>');
-						temp_fio.append(rating_col);
-					
-						//Rating
-						var rating_col = $('<td/>');
-						rating_col.text('Rating Here');
-						var summary_metoffice = $('<tr/>');
-						summary_metoffice.append(rating_col);
-						
-						//Rating
-						var rating_col = $('<td/>');
-						rating_col.text('Rating Here');
-						var windspeed_metoffice = $('<tr/>');
-						windspeed_metoffice.append(rating_col);
-						
-						//Rating
-						var rating_col = $('<td/>');
-						rating_col.text('Rating Here');
-						var temp_metoffice = $('<tr/>');
-						temp_metoffice.append(rating_col);
-			}
-					
 			var populate_comparisons = function(isToday, data) {
 			
 				var getLogoEl = function(metoffice) {
@@ -528,9 +505,72 @@ var search_by_location_keyword = function(location_name, callback) {
 						summary_col.append($('<p/>').text(summary));
 						summary_fio.append(summary_col);
 						
-					
+						
 					
 					}
+					
+					
+					//Rating
+						var rating_col = $('<td/>');
+						if (today) {
+							rating_col.addClass('fioRatingToday');
+						} else {
+							rating_col.addClass('fioRatingTomorrow');
+						}
+						rating_col.text('');
+						var summary_fio = $('<tr/>');
+						summary_fio.append(rating_col);
+						
+						
+						//Rating
+						var rating_col = $('<td/>');
+						if (today) {
+							rating_col.addClass('fioRatingToday');
+						} else {
+							rating_col.addClass('fioRatingTomorrow');
+						}
+						var windspeed_fio = $('<tr/>');
+						windspeed_fio.append(rating_col);
+						
+						//Rating
+						var rating_col = $('<td/>');
+						if (today) {
+							rating_col.addClass('fioRatingToday');
+						} else {
+							rating_col.addClass('fioRatingTomorrow');
+						}
+						var temp_fio = $('<tr/>');
+						temp_fio.append(rating_col);
+					
+						//Rating
+						var rating_col = $('<td/>');
+						if (today) {
+							rating_col.addClass('metofficeRatingToday');
+						} else {
+							rating_col.addClass('metofficeRatingTomorrow');
+						}
+						var summary_metoffice = $('<tr/>');
+						summary_metoffice.append(rating_col);
+						
+						//Rating
+						var rating_col = $('<td/>');
+							if (today) {
+							rating_col.addClass('metofficeRatingToday');
+						} else {
+							rating_col.addClass('metofficeRatingTomorrow');
+						}
+						var windspeed_metoffice = $('<tr/>');
+						windspeed_metoffice.append(rating_col);
+						
+						//Rating
+						var rating_col = $('<td/>');
+						if (today) {
+							rating_col.addClass('metofficeRatingToday');
+						} else {
+							rating_col.addClass('metofficeRatingTomorrow');
+						}
+						var temp_metoffice = $('<tr/>');
+						temp_metoffice.append(rating_col);
 				
 					
 			}
