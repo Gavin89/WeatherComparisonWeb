@@ -512,7 +512,7 @@ var search_by_location_keyword = function(location_name, callback) {
 					
 					//Rating
 						var rating_col = $('<td/>');
-						if (today) {
+						if (isToday) {
 							rating_col.addClass('fioRatingToday');
 						} else {
 							rating_col.addClass('fioRatingTomorrow');
@@ -524,7 +524,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Rating
 						var rating_col = $('<td/>');
-						if (today) {
+						if (isToday) {
 							rating_col.addClass('fioRatingToday');
 						} else {
 							rating_col.addClass('fioRatingTomorrow');
@@ -534,7 +534,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Rating
 						var rating_col = $('<td/>');
-						if (today) {
+						if (isToday) {
 							rating_col.addClass('fioRatingToday');
 						} else {
 							rating_col.addClass('fioRatingTomorrow');
@@ -544,7 +544,7 @@ var search_by_location_keyword = function(location_name, callback) {
 					
 						//Rating
 						var rating_col = $('<td/>');
-						if (today) {
+						if (isToday) {
 							rating_col.addClass('metofficeRatingToday');
 						} else {
 							rating_col.addClass('metofficeRatingTomorrow');
@@ -554,7 +554,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Rating
 						var rating_col = $('<td/>');
-							if (today) {
+							if (isToday) {
 							rating_col.addClass('metofficeRatingToday');
 						} else {
 							rating_col.addClass('metofficeRatingTomorrow');
@@ -564,7 +564,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Rating
 						var rating_col = $('<td/>');
-						if (today) {
+						if (isToday) {
 							rating_col.addClass('metofficeRatingToday');
 						} else {
 							rating_col.addClass('metofficeRatingTomorrow');
