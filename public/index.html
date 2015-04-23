@@ -24,23 +24,16 @@
 		<div class = "navbar navbar-inverse navbar-static-top" > 
 			<div class="col-sm-9 vertical-align"><h2>CompareWeather</h2></div>
 			<div class="col-sm-3">		
-				<form class="navbar-form" onsubmit="submitform()" id="search-form" role="search">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="eg WV10 3ET">
+						<input type="text" id ="location_search_name" class="form-control" placeholder="eg WV10 3ET">
 						<span class="input-group-btn">
-							<button type="reset" class="btn btn-default">
-								<span class="glyphicon glyphicon-remove">
-									<span class="sr-only">Close</span>
-								</span>
-							</button>
-							<button type="submit" class="btn btn-default">
+							<button type="submit" class="btn btn-default" id="location_search_btn">
 								<span class="glyphicon glyphicon-search">
 									<span class="sr-only">Search</span>
 								</span>
 							</button>
 						</span>
-					</div>
-				</form>			
+					</div>		
 				</br>				
 			</div>			
 		</div>		
