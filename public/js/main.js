@@ -15,7 +15,7 @@
  
 var search_by_location_keyword = function(location_name, callback) {
 			location_name += ',uk';
-		geocoder.geocode( { 'address': location_name}, function(results, status) {
+			geocoder.geocode( { 'address': location_name}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				
 				var locationTitle; 
@@ -180,7 +180,7 @@ var search_by_location_keyword = function(location_name, callback) {
 			
 			
 					el.empty(); 
-					var img = $('<img/>').attr('title', "RMSE: "+rmse+"BIAS: "+bias);
+					var img = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
 					img.attr('src', 'images/'+rating+'-rating.jpg');
 					el.append(img);
 			
@@ -715,10 +715,7 @@ var search_by_location_keyword = function(location_name, callback) {
 			
 					var index = -3;
 					for (var i = 0; i < Object.keys(fio_data).length; i++) {
-						
-						
-					
-						
+								
 						index += 3;
 						if (index > 21) {
 							continue;
@@ -738,7 +735,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						//Temperature
 						var temp = value.temperature;
 						
-						var temp_col = $('<td/>').text(temp);
+						var temp_col = $('<td/>').text(temp + "\u00B0" + "C");
 						
 						if (temp < 0) {
 							temp_col.addClass('temp_circle_cold');
@@ -754,7 +751,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Windspeed
 						var windspeed = value.windspeed;
-					var windspeed_col = $('<td/>').text(windspeed+'mph');
+						var windspeed_col = $('<td/>').text(windspeed+'mph');
 						
 				
 						windspeed_col.addClass('fo_windspeed');
