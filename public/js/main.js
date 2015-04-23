@@ -191,7 +191,8 @@ var search_by_location_keyword = function(location_name, callback) {
 			else if(rmse  >= -0.5 && rmse <= 0.5) {
 				rmse = 1;
 			}
-			else(rmse  >= -0.5 && rmse <= 0.5) {
+			else
+			{
 				rmse = 0;
 			}
 			
