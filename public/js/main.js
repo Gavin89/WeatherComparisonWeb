@@ -176,6 +176,25 @@ var search_by_location_keyword = function(location_name, callback) {
 			var bias = item.BIAS;
 			var rmse = item.RMSE;
 			
+			if(rmse  >= -0.1 && rmse <= 0.1) {
+				rmse = 5;
+			}
+			else if(rmse  >= -0.2 && rmse <= 0.2) {
+				rmse = 4;
+			}
+			else if(rmse  >= -0.3 && rmse <= 0.3) {
+				rmse = 3;
+			}
+			else if(rmse  >= -0.4 && rmse <= 0.4) {
+				rmse = 2
+			}
+			else if(rmse  >= -0.5 && rmse <= 0.5) {
+				rmse = 1;
+			}
+			else(rmse  >= -0.5 && rmse <= 0.5) {
+				rmse = 0;
+			}
+			
 			var calc_obj = {
 			rmse: RMSE,
 			bias: BIAS
