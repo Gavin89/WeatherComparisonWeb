@@ -10,62 +10,11 @@
 	 });
 	 
  });
- 
- $(function() {
-	if (navigator.geolocation) {
 
-		navigator.geolocation.getCurrentPosition(function (position) {
-		
-		var date = new Date();
-		var today_date = date.format("dd-mm-yyyy");
-		date.setDate(date.getDate() + 1);
-		var tomorrow_date = date.format("dd-mm-yyyy");
-				
-		var api_url = "locations/by_position/"+position.coords.latitude+"/"+position.coords.longitude+"/";
-		var api_calc_url = "calculations/by_position/"+position.coords.latitude+"/"+position.coords.longitude+"/";
-
-				
-				$.ajax({
-					url: api_url+today_date,
-					context: document.body,
-					dateType: "json"
-				}).done(function(data) {
-					console.log(today_date);
-					parse_data(true, data);
-				}).fail(function(err) {
-					console.log(err);
-				});
-				
-				$.ajax({
-					url: api_url+tomorrow_date,
-					context: document.body,
-					dateType: "json"
-				}).done(function(data) {
-					console.log('Tomorrow');
-					parse_data(false, data);
-				}).fail(function(err) {
-					console.log(err);
-				});
-
-				$.ajax({
-					url: api_calc_url+today_date,
-					context: document.body,
-					dateType: "json"
-				}).done(function(data) {
-					console.log(today_date);
-					parse_calculations(true, data);
-				}).fail(function(err) {
-					console.log(err);
-				});
-				
-		});
-
-		}
-});
  
  
 var search_by_location_keyword = function(location_name, callback) {
-			
+			location_name += ',uk';
 		geocoder.geocode( { 'address': location_name}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				
@@ -85,7 +34,7 @@ var search_by_location_keyword = function(location_name, callback) {
 				var tomorrow_date = date.format("dd-mm-yyyy");
 				
 				var api_url = "locations/by_position/"+location.k+"/"+location.D+"/";
-				var api_calc_url = "calculations/by_position/"+location.k+"/"+location.D+"/";
+				var api_calc_url = "calculations/by_position/"+location.D+"/"+location.k+"/";
 				
 				$.ajax({
 					url: api_url+today_date,
@@ -116,10 +65,12 @@ var search_by_location_keyword = function(location_name, callback) {
 				}).done(function(data) {
 					console.log(today_date);
 					parse_calculations(true, data);
+					parse_calculations(false, data);
 				}).fail(function(err) {
 					console.log(err);
 				});
 				
+		
 				} else {
 					alert('Geocode was not successful for the following reason: ' + status);
 				}
@@ -162,13 +113,15 @@ var search_by_location_keyword = function(location_name, callback) {
 			display_data(today, parsed_data);
 			}
 
-			var parsed_calculations= {};
 
 			var parse_calculations = function(today, data) {
 			
-	
+			var met_office_set = false;
+			var fio_set = false;
 			var mo_data_calc = {};
 			var fio_data_calc = {};
+			
+	
 			
 			data.forEach(function(item) {
 
@@ -176,43 +129,46 @@ var search_by_location_keyword = function(location_name, callback) {
 			var bias = item.BIAS;
 			var rmse = item.RMSE;
 			
-			if(rmse  >= -0.1 && rmse <= 0.1) {
-				rmse = 5;
+			var rating = 0;
+			
+			if(rmse  >= -1.1 && rmse <= 1.1) {
+				rating = 5;
 			}
-			else if(rmse  >= -0.2 && rmse <= 0.2) {
-				rmse = 4;
+			else if(rmse  >= -1.2 && rmse <= 1.2) {
+				rating = 4;
 			}
-			else if(rmse  >= -0.3 && rmse <= 0.3) {
-				rmse = 3;
+			else if(rmse  >= -1.3 && rmse <= 1.3) {
+				rating = 3;
 			}
-			else if(rmse  >= -0.4 && rmse <= 0.4) {
-				rmse = 2
+			else if(rmse  >= -1.4 && rmse <= 1.4) {
+				rating = 2
 			}
-			else if(rmse  >= -0.5 && rmse <= 0.5) {
-				rmse = 1;
+			else if(rmse  >= -2 && rmse <= 2) {
+				rating = 1;
 			}
 			else
 			{
-				rmse = 0;
+				rating = 0;
 			}
 			
-			var calc_obj = {
-			rmse: RMSE,
-			bias: BIAS
-			};
-			
-			if (weather_source1 == "MetOffice") {
+					
+						
+			if (weather_source1 == "MetOffice" && !met_office_set) {
+	
+			met_office_set = true;
 				if (today) {
-					display_rating($('.metofficeRatingToday'), rmse);
+					display_rating($('.metofficeRatingToday'), rating, bias, rmse);
 				} else {
-					display_rating($('.metofficeRatingTomorrow'), rmse);
+					display_rating($('.metofficeRatingTomorrow'), rating, bias, rmse);
 				
 				}
-			} else if (weather_source1 == "ForecastIO") {
+			} else if (weather_source1 == "ForecastIO" && !fio_set) {
+	
+			fio_set = true;
 				if (today) {
-					display_rating($('.fioRatingToday'), rmse);
+					display_rating($('.fioRatingToday'), rating, bias, rmse);
 				} else {
-					display_rating($('.fioRatingTomorrow'), rmse);
+					display_rating($('.fioRatingTomorrow'), rating, bias, rmse);
 				
 				}
 			}
@@ -220,11 +176,15 @@ var search_by_location_keyword = function(location_name, callback) {
 		
 			}
 			
-			var display_rating = function(el, rating) {
-				el.empty();
-				var img = $('<img/');
-				img.attr('src', 'images/'+rating+'-rating.jpg');
-				el.append(img);
+			var display_rating = function(el, rating, bias, rmse) {
+			
+			
+					el.empty(); 
+					var img = $('<img/>').attr('title', "RMSE: "+rmse+"BIAS: "+bias);
+					img.attr('src', 'images/'+rating+'-rating.jpg');
+					el.append(img);
+			
+				
 			}
 			
 					
@@ -530,7 +490,7 @@ var search_by_location_keyword = function(location_name, callback) {
 					}
 					
 					
-					//Rating
+						//Rating
 						var rating_col = $('<td/>');
 						if (isToday) {
 							rating_col.addClass('fioRatingToday');
@@ -538,7 +498,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							rating_col.addClass('fioRatingTomorrow');
 						}
 						rating_col.text('');
-						var summary_fio = $('<tr/>');
+				
 						summary_fio.append(rating_col);
 						
 						
@@ -549,7 +509,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						} else {
 							rating_col.addClass('fioRatingTomorrow');
 						}
-						var windspeed_fio = $('<tr/>');
+			
 						windspeed_fio.append(rating_col);
 						
 						//Rating
@@ -559,7 +519,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						} else {
 							rating_col.addClass('fioRatingTomorrow');
 						}
-						var temp_fio = $('<tr/>');
+				
 						temp_fio.append(rating_col);
 					
 						//Rating
@@ -569,7 +529,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						} else {
 							rating_col.addClass('metofficeRatingTomorrow');
 						}
-						var summary_metoffice = $('<tr/>');
+				
 						summary_metoffice.append(rating_col);
 						
 						//Rating
@@ -579,7 +539,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						} else {
 							rating_col.addClass('metofficeRatingTomorrow');
 						}
-						var windspeed_metoffice = $('<tr/>');
+				
 						windspeed_metoffice.append(rating_col);
 						
 						//Rating
@@ -589,7 +549,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						} else {
 							rating_col.addClass('metofficeRatingTomorrow');
 						}
-						var temp_metoffice = $('<tr/>');
+				
 						temp_metoffice.append(rating_col);
 				
 					
@@ -777,8 +737,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Temperature
 						var temp = value.temperature;
-						console.log(index);
-						console.log(value);
+						
 						var temp_col = $('<td/>').text(temp);
 						
 						if (temp < 0) {

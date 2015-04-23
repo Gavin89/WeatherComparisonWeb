@@ -63,7 +63,7 @@ Location.find( query, function(error, location) {
 
 app.get('/calculations/by_position/:lat/:lng/:date', function(req, res) {
 
-var query1 =  {loc : { $near : [ req.params.lng, req.params.lat], $maxDistance: 2}, date: req.params.date};
+var query1 =  {loc : { $near : [ req.params.lng, req.params.lat], $maxDistance: 1}, date: req.params.date};
 
 Calculation.find(query1, function(error, calculation) {
 
