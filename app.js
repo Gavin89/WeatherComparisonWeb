@@ -47,10 +47,24 @@ Location.find({location_name: req.params.location_name, date: req.params.date}, 
 
 app.get('/locations/by_position/:lng/:lat/:date', function(req, res) {
 
-var query =  {loc : { $near : [  req.params.lat,req.params.lng], $maxDistance: 2}, date: req.params.date};
+var query =  {loc : { $near : [  req.params.lat,req.params.lng], $maxDistance: 1}, date: req.params.date};
 
 Location.find( query, function(error, location) {
 	if(error){
+        res.json(error);
+    }
+    else if(location == null){
+        res.json('no such location')
+    } else {
+    	res.send(location)
+    }
+});
+});
+
+app.get('/calculations/by_name/:location_name/:date', function(req, res) {
+	
+Location.find({location_name: req.params.location_name, date: req.params.date}, function(error, location){
+    if(error){
         res.json(error);
     }
     else if(location == null){

@@ -120,6 +120,7 @@ tb.rankings {
 	text-align: center;
 	
 }
+
 td
 {
 	text-align: center;
@@ -127,6 +128,9 @@ td
 	font-weight: bold;
 }
 
+td .summary_comparison_today_table {
+	font-weight: normal;
+	}
 
 h1 {
 	color: #FFFFFF;
@@ -222,43 +226,23 @@ table {
 	background-position-x: center;
 }
 
-.fo_windspeed {
-	background-image:  url("../images/windspeed.png");
-	background-repeat: no-repeat;
-	background-position-x: center;
-}
-
 .temp_circle_hot {
-	background-image:  url("../images/temp_hot.png");
-	background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: center;
-	padding: 30px 0 !important;
+	background:  url("../images/temp_hot.png") center center no-repeat;
 	
 }
 
 .temp_circle_warm {
-	background-image:  url("../images/temp_warm.png");
-	background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: center;
-	padding: 30px 0 !important;
+
+	background:  url("../images/temp_warm.png") center center no-repeat;
 }
 
 
 .temp_circle_normal {
-	background-image:  url("../images/temp_normal.png");
-	background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: center;	
-	
+	background:  url("../images/temp_normal.png") center center no-repeat;
 }
 
 .temp_circle_cold {
-	background-image:  url("../images/temp_cold.png");
-	background-repeat: no-repeat;
-    background-position-y: center;
-    background-position-x: center;
+	background:  url("../images/temp_cold.png") center center no-repeat;
 	
 }
 
