@@ -82,6 +82,10 @@ td.mo_windspeed
 	
 }
 
+
+.location_search_name{
+    float:right;
+}
 td.mo_windspeed p {
 	padding-top:5px;
 }
@@ -204,7 +208,7 @@ table {
 }
 
 .pull-right {
-	padding-top:25px;
+	padding-top:0px;
 }
 .rankings {
 	
@@ -235,7 +239,10 @@ table {
 
 	background:  url("../images/temp_warm.png") center center no-repeat;
 }
-
+#search {
+    float: right;
+    margin-top:-20px;
+}
 
 .temp_circle_normal {
 	background:  url("../images/temp_normal.png") center center no-repeat;
