@@ -1,5 +1,11 @@
  var geocoder;
+ var summary_metoffice;
+ var rmse_data_mo = [];
+ var bias_data_mo = [];
+ var rmse_data_fio = [];
+ var bias_data_fio = [];
 
+ var summary_fio
  $(function() {
  
     geocoder = new google.maps.Geocoder();
@@ -14,6 +20,11 @@
  
  
 var search_by_location_keyword = function(location_name, callback) {
+			rmse_data_mo.length = 0;
+			bias_data_mo.length = 0;
+			rmse_data_fio.length = 0;
+			bias_data_fio.length = 0;
+			var locationCity;
 			location_name += ',uk';
 			geocoder.geocode( { 'address': location_name}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
@@ -23,7 +34,12 @@ var search_by_location_keyword = function(location_name, callback) {
 		
 				var location = results[0].geometry.location;
 				var locationTown = results[0].address_components[1].long_name;
-				var locationCity = results[0].address_components[3].long_name;
+				if(typeof (results[0].address_components[3].long_name !== 'undefined')){
+				locationCity = results[0].address_components[3].long_name;
+				}
+				else {
+				locationCity = results[0].address_components[2].long_name;
+				}
 				
 				locationTitle.empty();
 				locationTitle.append(locationTown + ", " + locationCity);	
@@ -35,7 +51,8 @@ var search_by_location_keyword = function(location_name, callback) {
 				
 				var api_url = "locations/by_position/"+location.k+"/"+location.D+"/";
 				var api_calc_url = "calculations/by_position/"+location.D+"/"+location.k+"/";
-				
+				console.log(api_url);
+				console.log(api_calc_url);
 				$.ajax({
 					url: api_url+today_date,
 					context: document.body,
@@ -126,9 +143,17 @@ var search_by_location_keyword = function(location_name, callback) {
 			data.forEach(function(item) {
 
 			var weather_source1 = item.weather_source;
-			var bias = item.BIAS;
-			var rmse = item.RMSE;
+			bias = item.BIAS;
+			rmse = item.RMSE;
 			
+			if (weather_source1 == "MetOffice"){
+			bias_data_mo.push(bias);
+			rmse_data_mo.push(rmse);
+			}
+			else {
+			bias_data_fio.push(bias);
+			rmse_data_fio.push(rmse);
+			}
 			var rating = 0;
 			
 			if(rmse  >= -1.1 && rmse <= 1.1) {
@@ -262,9 +287,9 @@ var search_by_location_keyword = function(location_name, callback) {
 				windspeed_fio.append(getLogoEl(false));
 				
 				//Summary
-				var summary_metoffice = $('<tr/>');
+				summary_metoffice = $('<tr/>');
 				summary_metoffice.append(getLogoEl(true));
-				var summary_fio = $('<tr/>');
+				summary_fio = $('<tr/>');
 				summary_fio.append(getLogoEl(false));
 				
 				temp_table.append(temp_metoffice);
@@ -280,6 +305,7 @@ var search_by_location_keyword = function(location_name, callback) {
 				var fio_data = data['forecastio'];
 			
 				$.each(metoffice_data, function(index, value) {
+				
 					//Temperature
 						var temp = value.temperature;
 						var temp_col = $('<td/>').text(temp+"\u00B0" + "C");
@@ -298,21 +324,17 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						//Windspeed
 						var windspeed = value.windspeed;
-							var windspeed_col = $('<td/>').text(windspeed+'mph');
+						var windspeed_col = $('<td/>').text(windspeed+'mph');
 						
 				
 						windspeed_col.addClass('mo_windspeed');
-					
-						
+									
 						windspeed_metoffice.append(windspeed_col);
 						
 						//Summary
 						var summary = value.summary;
 						var summary_col = $('<td/>')
-						
-				
-						windspeed_col.addClass('mo_summary');
-					
+											
 						var img = $('<img/>').addClass('img-circle');
 						
 						var img_name = '';
@@ -378,11 +400,55 @@ var search_by_location_keyword = function(location_name, callback) {
 						summary_col.append(img);
 						summary_col.append($('<p/>').text(summary));
 						summary_metoffice.append(summary_col);
-					
 						
-					
+									
 				});
-								
+				
+			
+							var rating = 0;
+							var rmse = rmse_data_mo[0];
+							var bias = bias_data_mo[0];
+							console.log("WHERE" + rmse);
+							if(rmse  >= -1.1 && rmse <= 1.1) {
+								rating = 5;
+							}
+							else if(rmse  >= -1.2 && rmse <= 1.2) {
+								rating = 4;
+							}
+							else if(rmse  >= -1.3 && rmse <= 1.3) {
+								rating = 3;
+							}
+							else if(rmse  >= -1.4 && rmse <= 1.4) {
+								rating = 2
+							}
+							else if(rmse  >= -2 && rmse <= 2) {
+								rating = 1;
+							}
+							else
+							{
+								rating = 0;
+							}
+							
+						var rating_col = $('<td/>');
+						var img_rating = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						img_rating.attr('src', 'images/'+rating+'-rating.jpg');
+		
+						//Rating
+						rating_col.append(img_rating);			
+						temp_metoffice.append(rating_col);
+					
+						var rating_col1 = $('<td/>');
+						var img_rating1 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						img_rating1.attr('src', 'images/'+rating+'-rating.jpg');
+						rating_col1.append(img_rating1);		
+						windspeed_metoffice.append(rating_col1);
+						
+						var rating_col2 = $('<td/>');
+						var img_rating2 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						img_rating2.attr('src', 'images/'+rating+'-rating.jpg');
+						rating_col2.append(img_rating2);		
+						summary_metoffice.append(rating_col2);
+						
 				var index = -3;
 					for (var i = 0; i < Object.keys(fio_data).length; i++) {
 						
@@ -403,7 +469,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						//Temperature
 						var temp = value.temperature;
 				
-						var temp_col = $('<td/>').text(temp);
+						var temp_col = $('<td/>').text(temp+"\u00B0" + "C");
 						
 						if (temp < 0) {
 							temp_col.addClass('temp_circle_cold');
@@ -418,12 +484,15 @@ var search_by_location_keyword = function(location_name, callback) {
 						temp_fio.append(temp_col);
 						
 						//Windspeed
+						var img_windspeed = $('<img/>').addClass('img-circle');
 						var windspeed = value.windspeed;
-							var windspeed_col = $('<td/>').text(windspeed+'mph');
+						var windspeed_col = $('<td/>');
+													                    			
+						img_windspeed.attr('src', 'images/windspeed.png');
 						
-				
-						windspeed_col.addClass('fo_windspeed');
-					
+						windspeed_col.append(img_windspeed);	
+						windspeed_col.append($('<p/>').text(windspeed+'mph'));
+
 						
 						windspeed_fio.append(windspeed_col);
 					
@@ -483,75 +552,52 @@ var search_by_location_keyword = function(location_name, callback) {
 						
 						summary_col.append(img);
 						summary_col.append($('<p/>').text(summary));
-						summary_fio.append(summary_col);
-						
-						
+						summary_fio.append(summary_col);					
 					
 					}
+							var rating = 0;
+							var rmse = rmse_data_fio[0];
+							var bias = bias_data_fio[0];
+							console.log("HERE" + rmse);
+							if(rmse  >= -1.1 && rmse <= 1.1) {
+								rating = 5;
+							}
+							else if(rmse  >= -1.2 && rmse <= 1.2) {
+								rating = 4;
+							}
+							else if(rmse  >= -1.3 && rmse <= 1.3) {
+								rating = 3;
+							}
+							else if(rmse  >= -1.4 && rmse <= 1.4) {
+								rating = 2
+							}
+							else if(rmse  >= -2 && rmse <= 2) {
+								rating = 1;
+							}
+							else
+							{
+								rating = 0;
+							}
+							
+						var rating_col3 = $('<td/>');
+						var img_rating3 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						img_rating3.attr('src', 'images/'+rating+'-rating.jpg');
+		
+						//Rating
+						rating_col3.append(img_rating3);			
+						temp_fio.append(rating_col3);
 					
-					
-						//Rating
-						var rating_col = $('<td/>');
-						if (isToday) {
-							rating_col.addClass('fioRatingToday');
-						} else {
-							rating_col.addClass('fioRatingTomorrow');
-						}
-						rating_col.text('');
-				
-						summary_fio.append(rating_col);
+						var rating_col4 = $('<td/>');
+						var img_rating4 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						img_rating4.attr('src', 'images/'+rating+'-rating.jpg');
+						rating_col4.append(img_rating4);		
+						windspeed_fio.append(rating_col4);
 						
-						
-						//Rating
-						var rating_col = $('<td/>');
-						if (isToday) {
-							rating_col.addClass('fioRatingToday');
-						} else {
-							rating_col.addClass('fioRatingTomorrow');
-						}
-			
-						windspeed_fio.append(rating_col);
-						
-						//Rating
-						var rating_col = $('<td/>');
-						if (isToday) {
-							rating_col.addClass('fioRatingToday');
-						} else {
-							rating_col.addClass('fioRatingTomorrow');
-						}
-				
-						temp_fio.append(rating_col);
-					
-						//Rating
-						var rating_col = $('<td/>');
-						if (isToday) {
-							rating_col.addClass('metofficeRatingToday');
-						} else {
-							rating_col.addClass('metofficeRatingTomorrow');
-						}
-				
-						summary_metoffice.append(rating_col);
-						
-						//Rating
-						var rating_col = $('<td/>');
-							if (isToday) {
-							rating_col.addClass('metofficeRatingToday');
-						} else {
-							rating_col.addClass('metofficeRatingTomorrow');
-						}
-				
-						windspeed_metoffice.append(rating_col);
-						
-						//Rating
-						var rating_col = $('<td/>');
-						if (isToday) {
-							rating_col.addClass('metofficeRatingToday');
-						} else {
-							rating_col.addClass('metofficeRatingTomorrow');
-						}
-				
-						temp_metoffice.append(rating_col);
-				
+						var rating_col5 = $('<td/>');
+						var img_rating5 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						img_rating5.attr('src', 'images/'+rating+'-rating.jpg');
+						rating_col5.append(img_rating5);		
+						summary_fio.append(rating_col5);
 					
 			}
 			
@@ -600,13 +646,16 @@ var search_by_location_keyword = function(location_name, callback) {
 						metoffice_temp_row.append(temp_col);
 						
 						//Windspeed
+						var img_windspeed = $('<img/>').addClass('img-circle');
 						var windspeed = value.windspeed;
-						var windspeed_col = $('<td/>').text(windspeed+'mph');
+						var windspeed_col = $('<td/>');
+													                    			
+						img_windspeed.attr('src', 'images/windspeed.png');
 						
+						windspeed_col.append(img_windspeed);	
+						windspeed_col.append($('<p/>').text(windspeed+'mph'));
+		
 				
-						windspeed_col.addClass('mo_windspeed');
-					
-						
 						metoffice_windspeed_row.append(windspeed_col);
 						
 						//Summary
@@ -614,7 +663,7 @@ var search_by_location_keyword = function(location_name, callback) {
 						var summary_col = $('<td/>')
 						
 				
-						windspeed_col.addClass('mo_summary');
+						summary_col.addClass('mo_summary');
 					
 						var img = $('<img/>').addClass('img-circle');
 						
@@ -750,12 +799,15 @@ var search_by_location_keyword = function(location_name, callback) {
 						fio_temp_row.append(temp_col);
 						
 						//Windspeed
+						var img_windspeed = $('<img/>').addClass('img-circle');
 						var windspeed = value.windspeed;
-						var windspeed_col = $('<td/>').text(windspeed+'mph');
+						var windspeed_col = $('<td/>');
+													                    			
+						img_windspeed.attr('src', 'images/windspeed.png');
 						
-				
-						windspeed_col.addClass('fo_windspeed');
-					
+						windspeed_col.append(img_windspeed);	
+						windspeed_col.append($('<p/>').text(windspeed+'mph'));
+		
 						
 						fio_windspeed_row.append(windspeed_col);
 					
