@@ -17,7 +17,88 @@
 	 
  });
 
- 
+$(function() {
+			rmse_data_mo.length = 0;
+			bias_data_mo.length = 0;
+			rmse_data_fio.length = 0;
+			bias_data_fio.length = 0;
+
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function (location){
+				var date = new Date();
+				date.setDate(date.getDate() - 1);
+				var today_date = date.format("dd-mm-yyyy");
+
+				var tomorrow_date = date.format("dd-mm-yyyy");
+				geocoder = new google.maps.Geocoder();
+				longitude = location.coords.longitude; 
+				latitude = location.coords.latitude; 
+				var latlng = new google.maps.LatLng(latitude, longitude);
+				
+				geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+
+				var locationTitle; 
+				locationTitle = $('#location_name');
+		
+				var location = results[0].geometry.location;
+				var locationTown = results[0].address_components[2].long_name;
+				if(typeof (results[0].address_components[4].long_name !== 'undefined')){
+				locationCity = results[0].address_components[4].long_name;
+				}
+				else {
+				locationCity = results[0].address_components[2].long_name;
+				}
+				
+				locationTitle.empty();
+				locationTitle.append(locationTown + ", " + locationCity);	
+    });
+
+				var api_url = "locations/by_position/"+latitude+"/"+longitude+"/";
+				var api_calc_url = "calculations/by_position/"+longitude+"/"+latitude+"/";
+				console.log(api_url);
+				console.log(api_calc_url);
+				$.ajax({
+					url: api_url+today_date,
+					context: document.body,
+					dateType: "json"
+				}).done(function(data) {
+					console.log(today_date);
+					parse_data(true, data);
+				}).fail(function(err) {
+					console.log(err);
+				});
+				
+				$.ajax({
+					url: api_url+tomorrow_date,
+					context: document.body,
+					dateType: "json"
+				}).done(function(data) {
+					console.log('Tomorrow');
+					parse_data(false, data);
+				}).fail(function(err) {
+					console.log(err);
+				});
+
+				$.ajax({
+					url: api_calc_url+today_date,
+					context: document.body,
+					dateType: "json"
+				}).done(function(data) {
+					console.log(today_date);
+					parse_calculations(true, data);
+					parse_calculations(false, data);
+				}).fail(function(err) {
+					console.log(err);
+				});
+				
+		
+				}); 
+			} else {
+					alert('Geocode was not successful for the following reason: ' + status);
+				}
+		});
+
+
  
 var search_by_location_keyword = function(location_name, callback) {
 			rmse_data_mo.length = 0;
@@ -34,12 +115,17 @@ var search_by_location_keyword = function(location_name, callback) {
 		
 				var location = results[0].geometry.location;
 				var locationTown = results[0].address_components[1].long_name;
+				try{
 				if(typeof (results[0].address_components[3].long_name !== 'undefined')){
 				locationCity = results[0].address_components[3].long_name;
 				}
 				else {
-				locationCity = results[0].address_components[2].long_name;
+				locationCity = results[0].address_components[4].long_name;
 				}
+			}
+			catch (e){
+				
+			}
 				
 				locationTitle.empty();
 				locationTitle.append(locationTown + ", " + locationCity);	
