@@ -240,25 +240,26 @@ var search_by_location_keyword = function(location_name, callback) {
 			bias_data_fio.push(bias);
 			rmse_data_fio.push(rmse);
 			}
+			
 			var rating = 0;
 			var score = 2 * bias + rmse;
-			
+			console.log(score);
 			if(score <= 0.9) {
 				rating = 5;
 			}
-				else if(score > 0.9 && score <= 1.4) {
-								rating = 4;
+			else if(score > 0.9 && score <= 1.4) {
+				rating = 4;
+			}
+			else if(score > 1.4 && score <= 2.0) {
+				rating = 3;
+			}
+			else if(score > 2.0 && score <= 2.4) {
+				rating = 2
+			}
+			else if(score > 2.4 && score <= 4.0) {
+				rating = 1;
 				}
-				else if(score > 1.4 && score <= 2.0) {
-								rating = 3;
-				}
-				else if(score > 2.0 && score <= 2.4) {
-								rating = 2
-				}
-				else if(score > 2.4 && score <= 4.0) {
-								rating = 1;
-				}
-				else
+			else
 				{
 					rating = 0;
 				}
@@ -270,18 +271,18 @@ var search_by_location_keyword = function(location_name, callback) {
 	
 			met_office_set = true;
 				if (today) {
-					display_rating($('.metofficeRatingToday'), rating, bias, rmse);
+					display_rating($('.metofficeRatingToday'), rating, score, rmse);
 				} else {
-					display_rating($('.metofficeRatingTomorrow'), rating, bias, rmse);
+					display_rating($('.metofficeRatingTomorrow'), rating, score, rmse);
 				
 				}
 			} else if (weather_source1 == "ForecastIO" && !fio_set) {
 	
 			fio_set = true;
 				if (today) {
-					display_rating($('.fioRatingToday'), rating, bias, rmse);
+					display_rating($('.fioRatingToday'), rating, score, rmse);
 				} else {
-					display_rating($('.fioRatingTomorrow'), rating, bias, rmse);
+					display_rating($('.fioRatingTomorrow'), rating, score, rmse);
 				
 				}
 			}
@@ -289,11 +290,11 @@ var search_by_location_keyword = function(location_name, callback) {
 		
 			}
 			
-			var display_rating = function(el, rating, bias, rmse) {
+			var display_rating = function(el, rating, score, rmse) {
 			
 			
 					el.empty(); 
-					var img = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+					var img = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias);
 					img.attr('src', 'images/'+rating+'-rating.jpg');
 					el.append(img);
 			
@@ -493,12 +494,12 @@ var search_by_location_keyword = function(location_name, callback) {
 				});
 				
 			
-							var rmse = rmse_data_mo[0];
-							var bias = bias_data_mo[0];
+							var rmse_mo = rmse_data_mo[0];
+							var bias_mo = bias_data_mo[0];
 							
 							var rating = 0;
-							var score = 2 * bias + rmse;
-							
+							var score = 2 * bias_mo + rmse_mo;
+							console.log(score);
 							if(score <= 0.9) {
 								rating = 5;
 							}
@@ -521,7 +522,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							
 							
 						var rating_col = $('<td/>');
-						var img_rating = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						var img_rating = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_mo);
 						img_rating.attr('src', 'images/'+rating+'-rating.jpg');
 		
 						//Rating
@@ -529,13 +530,13 @@ var search_by_location_keyword = function(location_name, callback) {
 						temp_metoffice.append(rating_col);
 					
 						var rating_col1 = $('<td/>');
-						var img_rating1 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						var img_rating1 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_mo);
 						img_rating1.attr('src', 'images/'+rating+'-rating.jpg');
 						rating_col1.append(img_rating1);		
 						windspeed_metoffice.append(rating_col1);
 						
 						var rating_col2 = $('<td/>');
-						var img_rating2 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						var img_rating2 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_mo);
 						img_rating2.attr('src', 'images/'+rating+'-rating.jpg');
 						rating_col2.append(img_rating2);		
 						summary_metoffice.append(rating_col2);
@@ -647,11 +648,11 @@ var search_by_location_keyword = function(location_name, callback) {
 					
 					}
 
-							var rmse = rmse_data_fio[0];
-							var bias = bias_data_fio[0];
+							var rmse_fio = rmse_data_fio[0];
+							var bias_fio = bias_data_fio[0];
 
 							var rating = 0;
-							var score = 2 * bias + rmse;
+							var score = 2 * bias_fio + rmse_fio;
 							
 							if(score <= 0.9) {
 								rating = 5;
@@ -674,7 +675,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							}
 							
 						var rating_col3 = $('<td/>');
-						var img_rating3 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						var img_rating3 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_fio);
 						img_rating3.attr('src', 'images/'+rating+'-rating.jpg');
 		
 						//Rating
@@ -682,13 +683,13 @@ var search_by_location_keyword = function(location_name, callback) {
 						temp_fio.append(rating_col3);
 					
 						var rating_col4 = $('<td/>');
-						var img_rating4 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						var img_rating4 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_fio);
 						img_rating4.attr('src', 'images/'+rating+'-rating.jpg');
 						rating_col4.append(img_rating4);		
 						windspeed_fio.append(rating_col4);
 						
 						var rating_col5 = $('<td/>');
-						var img_rating5 = $('<img/>').attr('title', "RMSE: "+rmse+"\nBIAS: "+bias);
+						var img_rating5 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_fio);
 						img_rating5.attr('src', 'images/'+rating+'-rating.jpg');
 						rating_col5.append(img_rating5);		
 						summary_fio.append(rating_col5);
