@@ -512,22 +512,22 @@ var search_by_location_keyword = function(location_name, callback) {
 							var bias_mo = bias_data_mo[0];
 							
 							var rating = 0;
-							var score = (2 * bias_mo) + rmse_mo;
+							var score_mo = (bias_mo * 2) + rmse_mo;
 						
-							score = score.toFixed(2);
-							if(score <= 0.9) {
+							score_mo = score_mo.toFixed(2);
+							if(score_mo <= 0.9) {
 								rating = 5;
 							}
-							else if(score > 0.9 && score <= 1.4) {
-								rating = 4;
+							else if(score_mo > 0.9 && score_mo <= 1.4) {
+								rating = 4;score_mo
 							}
-							else if(score > 1.4 && score <= 2.0) {
+							else if(score_more > 1.4 && score_mo <= 2.0) {
 								rating = 3;
 							}
-							else if(score > 2.0 && score <= 2.4) {
+							else if(score_mo > 2.0 && score_mo <= 2.4) {
 								rating = 2
 							}
-							else if(score > 2.4 && score <= 4.0) {
+							else if(score_mo > 2.4 && score_mo <= 4.0) {
 								rating = 1;
 							}
 							else
@@ -667,21 +667,21 @@ var search_by_location_keyword = function(location_name, callback) {
 							var bias_fio = bias_data_fio[0];
 
 							var rating = 0;
-							var score = (2 * bias_fio) + rmse_fio;
-							score = score.toFixed(2);
-							if(score <= 0.9) {
+							var fio_score = (2 * bias_fio) + rmse_fio;
+							fio_score = fio_score.toFixed(2);
+							if(fio_score <= 0.9) {
 								rating = 5;
 							}
-							else if(score > 0.9 && score <= 1.4) {
+							else if(fio_score > 0.9 && fio_score <= 1.4) {
 								rating = 4;
 							}
-							else if(score > 1.4 && score <= 2.0) {
+							else if(fio_score > 1.4 && fio_score <= 2.0) {
 								rating = 3;
 							}
-							else if(score > 2.0 && score <= 2.4) {
+							else if(fio_score > 2.0 && fio_score <= 2.4) {
 								rating = 2
 							}
-							else if(score > 2.4 && score <= 4.0) {
+							else if(fio_score > 2.4 && fio_score <= 4.0) {
 								rating = 1;
 							}
 							else
