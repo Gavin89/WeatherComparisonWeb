@@ -537,7 +537,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							
 							
 						var rating_col = $('<td/>');
-						var img_rating = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_mo);
+						var img_rating = $('<img/>').attr('title', "RMSE: "+score_mo+"\nBIAS: "+bias_mo);
 						img_rating.attr('src', 'images/'+rating+'-rating.jpg');
 		
 						//Rating
@@ -545,13 +545,13 @@ var search_by_location_keyword = function(location_name, callback) {
 						temp_metoffice.append(rating_col);
 					
 						var rating_col1 = $('<td/>');
-						var img_rating1 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_mo);
+						var img_rating1 = $('<img/>').attr('title', "RMSE: "+score_mo+"\nBIAS: "+bias_mo);
 						img_rating1.attr('src', 'images/'+rating+'-rating.jpg');
 						rating_col1.append(img_rating1);		
 						windspeed_metoffice.append(rating_col1);
 						
 						var rating_col2 = $('<td/>');
-						var img_rating2 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_mo);
+						var img_rating2 = $('<img/>').attr('title', "RMSE: "+score_mo+"\nBIAS: "+bias_mo);
 						img_rating2.attr('src', 'images/'+rating+'-rating.jpg');
 						rating_col2.append(img_rating2);		
 						summary_metoffice.append(rating_col2);
@@ -690,7 +690,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							}
 							
 						var rating_col3 = $('<td/>');
-						var img_rating3 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_fio);
+						var img_rating3 = $('<img/>').attr('title', "RMSE: "+fio_score+"\nBIAS: "+bias_fio);
 						img_rating3.attr('src', 'images/'+rating+'-rating.jpg');
 		
 						//Rating
@@ -698,13 +698,13 @@ var search_by_location_keyword = function(location_name, callback) {
 						temp_fio.append(rating_col3);
 					
 						var rating_col4 = $('<td/>');
-						var img_rating4 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_fio);
+						var img_rating4 = $('<img/>').attr('title', "RMSE: "+fio_score+"\nBIAS: "+bias_fio);
 						img_rating4.attr('src', 'images/'+rating+'-rating.jpg');
 						rating_col4.append(img_rating4);		
 						windspeed_fio.append(rating_col4);
 						
 						var rating_col5 = $('<td/>');
-						var img_rating5 = $('<img/>').attr('title', "RMSE: "+score+"\nBIAS: "+bias_fio);
+						var img_rating5 = $('<img/>').attr('title', "RMSE: "+fio_score+"\nBIAS: "+bias_fio);
 						img_rating5.attr('src', 'images/'+rating+'-rating.jpg');
 						rating_col5.append(img_rating5);		
 						summary_fio.append(rating_col5);
