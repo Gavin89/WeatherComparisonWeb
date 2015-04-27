@@ -512,9 +512,8 @@ var search_by_location_keyword = function(location_name, callback) {
 							var bias_mo = bias_data_mo[0];
 							
 							var rating = 0;
-							var score = 2 * bias_mo + rmse_mo;
-							console.log(bias_mo);
-							console.log(rmse_mo);
+							var score = (2 * bias_mo) + rmse_mo;
+						
 							score = score.toFixed(2);
 							if(score <= 0.9) {
 								rating = 5;
