@@ -255,7 +255,7 @@ var search_by_location_keyword = function(location_name, callback) {
 			}
 			
 			var rating = 0;
-			var score = (2 * bias) + rmse;
+			var score = (bias * 2) + rmse;
 			score = score.toFixed(2);
 			console.log(score);
 			if(score <= 0.9) {
@@ -667,7 +667,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							var bias_fio = bias_data_fio[0];
 
 							var rating = 0;
-							var fio_score = (2 * bias_fio) + rmse_fio;
+							var fio_score = (bias_fio * 2) + rmse_fio;
 							fio_score = fio_score.toFixed(2);
 							if(fio_score <= 0.9) {
 								rating = 5;
