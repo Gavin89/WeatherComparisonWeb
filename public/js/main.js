@@ -246,16 +246,16 @@ var search_by_location_keyword = function(location_name, callback) {
 			if(score <= 0.9) {
 				rating = 5;
 			}
-							else if(score > 0.9 && <= 1.4) {
+							else if(score > 0.9 && score <= 1.4) {
 								rating = 4;
 							}
-							else if(score > 1.4 && <= 2.0) {
+							else if(score > 1.4 && score <= 2.0) {
 								rating = 3;
 							}
-							else if(score > 2.0 && <= 2.4) {
+							else if(score > 2.0 && score <= 2.4) {
 								rating = 2
 							}
-							else if(score > 2.4 && <= 4.0) {
+							else if(score > 2.4 && score <= 4.0) {
 								rating = 1;
 							}
 			
@@ -497,16 +497,16 @@ var search_by_location_keyword = function(location_name, callback) {
 							if(score <= 0.9) {
 								rating = 5;
 							}
-							else if(score > 0.9 && <= 1.4) {
+							else if(score > 0.9 && score <= 1.4) {
 								rating = 4;
 							}
-							else if(score > 1.4 && <= 2.0) {
+							else if(score > 1.4 && score <= 2.0) {
 								rating = 3;
 							}
-							else if(score > 2.0 && <= 2.4) {
+							else if(score > 2.0 && score <= 2.4) {
 								rating = 2
 							}
-							else if(score > 2.4 && <= 4.0) {
+							else if(score > 2.4 && score <= 4.0) {
 								rating = 1;
 							}
 							
@@ -646,16 +646,16 @@ var search_by_location_keyword = function(location_name, callback) {
 							if(score <= 0.9) {
 								rating = 5;
 							}
-							else if(score > 0.9 && <= 1.4) {
+							else if(score > 0.9 && score <= 1.4) {
 								rating = 4;
 							}
-							else if(score > 1.4 && <= 2.0) {
+							else if(score > 1.4 && score <= 2.0) {
 								rating = 3;
 							}
-							else if(score > 2.0 && <= 2.4) {
+							else if(score > 2.0 && score <= 2.4) {
 								rating = 2
 							}
-							else if(score > 2.4 && <= 4.0) {
+							else if(score > 2.4 && score <= 4.0) {
 								rating = 1;
 							}
 							else
