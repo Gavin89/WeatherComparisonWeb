@@ -15,7 +15,20 @@
 		search_by_location_keyword(location_name);
 	 });
 	 
+	 
+	 $('#location_search_name').bind("enterKey",function(e){
+ 	var location_name = $('#location_search_name').val();
+		search_by_location_keyword(location_name);
+});
+$('#location_search_name').keyup(function(e){
+    if(e.keyCode == 13)
+    {
+        $(this).trigger("enterKey");
+    }
+});
  });
+ 
+
 
 $(function() {
 			rmse_data_mo.length = 0;
