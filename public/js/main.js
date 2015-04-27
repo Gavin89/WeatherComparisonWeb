@@ -492,23 +492,25 @@ var search_by_location_keyword = function(location_name, callback) {
 				});
 				
 			
-							var rating = 0;
 							var rmse = rmse_data_mo[0];
 							var bias = bias_data_mo[0];
-							console.log("WHERE" + rmse);
-							if(rmse  >= -1.1 && rmse <= 1.1) {
+							
+							var rating = 0;
+							var score = 2 * bias + rmse;
+							
+							if(score <= 0.9) {
 								rating = 5;
 							}
-							else if(rmse  >= -1.2 && rmse <= 1.2) {
+							else if(score <= 1.4) {
 								rating = 4;
 							}
-							else if(rmse  >= -1.3 && rmse <= 1.3) {
+							else if(score <= 2.0) {
 								rating = 3;
 							}
-							else if(rmse  >= -1.4 && rmse <= 1.4) {
+							else if(score <= 2.4) {
 								rating = 2
 							}
-							else if(rmse  >= -2 && rmse <= 2) {
+							else if(score <= 4.0) {
 								rating = 1;
 							}
 							else
@@ -642,23 +644,26 @@ var search_by_location_keyword = function(location_name, callback) {
 						summary_fio.append(summary_col);					
 					
 					}
-							var rating = 0;
+
 							var rmse = rmse_data_fio[0];
 							var bias = bias_data_fio[0];
 
-							if(rmse  >= -1.1 && rmse <= 1.1) {
+							var rating = 0;
+							var score = 2 * bias + rmse;
+							
+							if(score <= 0.9) {
 								rating = 5;
 							}
-							else if(rmse  >= -1.2 && rmse <= 1.2) {
+							else if(score <= 1.4) {
 								rating = 4;
 							}
-							else if(rmse  >= -1.3 && rmse <= 1.3) {
+							else if(score <= 2.0) {
 								rating = 3;
 							}
-							else if(rmse  >= -1.4 && rmse <= 1.4) {
+							else if(score <= 2.4) {
 								rating = 2
 							}
-							else if(rmse  >= -2 && rmse <= 2) {
+							else if(score <= 4.0) {
 								rating = 1;
 							}
 							else
