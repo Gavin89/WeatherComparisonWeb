@@ -257,7 +257,7 @@ var search_by_location_keyword = function(location_name, callback) {
 			var rating = 0;
 			var score = (bias * 2) + rmse;
 			score = score.toFixed(2);
-			console.log(score);
+			console.log("Rating" + score);
 			if(score <= 0.9) {
 				rating = 5;
 			}
@@ -513,7 +513,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							
 							var rating = 0;
 							var score_mo = (bias_mo * 2) + rmse_mo;
-						
+							cosole.log("MO" + score_mo);
 							score_mo = score_mo.toFixed(2);
 							if(score_mo <= 0.9) {
 								rating = 5;
@@ -665,9 +665,10 @@ var search_by_location_keyword = function(location_name, callback) {
 
 							var rmse_fio = rmse_data_fio[0];
 							var bias_fio = bias_data_fio[0];
-
+							
 							var rating = 0;
 							var fio_score = (bias_fio * 2) + rmse_fio;
+							console.log(fio_score);
 							fio_score = fio_score.toFixed(2);
 							if(fio_score <= 0.9) {
 								rating = 5;
