@@ -240,6 +240,8 @@ var search_by_location_keyword = function(location_name, callback) {
 	
 			
 			data.forEach(function(item) {
+			bias = 0;
+			rmse = 0;
 
 			var weather_source1 = item.weather_source;
 			bias = item.BIAS;
@@ -507,13 +509,15 @@ var search_by_location_keyword = function(location_name, callback) {
 									
 				});
 				
-			
-							var rmse_mo = rmse_data_mo[0];
-							var bias_mo = bias_data_mo[0];
+							var rmse_mo = 0;
+							var bias_mo = 0;
+							
+							rmse_mo = rmse_data_mo[0];
+							bias_mo = bias_data_mo[0];
 							
 							var rating = 0;
 							var score_mo = (bias_mo * 2) + rmse_mo;
-							cosole.log("MO" + score_mo);
+							console.log("MO" + score_mo);
 							score_mo = score_mo.toFixed(2);
 							if(score_mo <= 0.9) {
 								rating = 5;
@@ -662,9 +666,11 @@ var search_by_location_keyword = function(location_name, callback) {
 						summary_fio.append(summary_col);					
 					
 					}
-
-							var rmse_fio = rmse_data_fio[0];
-							var bias_fio = bias_data_fio[0];
+							var rmse_fio = 0;
+							var bias_fio = 0;
+							
+							rmse_fio = rmse_data_fio[0];
+							bias_fio = bias_data_fio[0];
 							
 							var rating = 0;
 							var fio_score = (bias_fio * 2) + rmse_fio;
