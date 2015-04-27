@@ -35,6 +35,8 @@ $(function() {
 			bias_data_mo.length = 0;
 			rmse_data_fio.length = 0;
 			bias_data_fio.length = 0;
+			
+			
 
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function (location){
@@ -675,7 +677,9 @@ var search_by_location_keyword = function(location_name, callback) {
 							var rating = 0;
 							console.log("FIO" + bias_fio);
 							console.log("FIO" + rmse_fio);
-							var fio_score = (bias_fio * 2) + rmse_fio;
+							
+							var bias_calc = bias_fio * 2; 
+							var fio_score = bias_calc + rmse_fio;
 							console.log(fio_score);
 							fio_score = fio_score.toFixed(2);
 							if(fio_score <= 0.9) {
