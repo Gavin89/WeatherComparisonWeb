@@ -518,7 +518,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							bias_mo = bias_data_mo[0];
 							
 							var rating = 0;
-							var score_mo = 2 * Maths.abs(bias)+ rmse_mo;
+							var score_mo = 2 * Math.abs(bias)+ rmse_mo;
 							console.log("MO" + score_mo);
 							score_mo = score_mo.toFixed(2);
 							if(score_mo <= 0.9) {
@@ -678,7 +678,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							console.log("FIO" + bias_fio);
 							console.log("FIO" + rmse_fio);
 
-							var fio_score = 2 * Maths.abs(bias) + rmse_fio;
+							var fio_score = 2 * Math.abs(bias) + rmse_fio;
 							console.log(fio_score);
 							fio_score = fio_score.toFixed(2);
 							if(fio_score <= 0.9) {
