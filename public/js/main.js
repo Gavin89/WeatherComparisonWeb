@@ -259,7 +259,7 @@ var search_by_location_keyword = function(location_name, callback) {
 			}
 			
 			var rating = 0;
-			var score = (bias * 2) + rmse;
+			var score = 2 * Math.abs(bias)+ rmse;
 			score = score.toFixed(2);
 			console.log("Rating" + score);
 			if(score <= 0.9) {
@@ -518,7 +518,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							bias_mo = bias_data_mo[0];
 							
 							var rating = 0;
-							var score_mo = (bias_mo * 2) + rmse_mo;
+							var score_mo = 2 * Maths.abs(bias)+ rmse_mo;
 							console.log("MO" + score_mo);
 							score_mo = score_mo.toFixed(2);
 							if(score_mo <= 0.9) {
@@ -527,7 +527,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							else if(score_mo > 0.9 && score_mo <= 1.4) {
 								rating = 4;score_mo
 							}
-							else if(score_more > 1.4 && score_mo <= 2.0) {
+							else if(score_mo > 1.4 && score_mo <= 2.0) {
 								rating = 3;
 							}
 							else if(score_mo > 2.0 && score_mo <= 2.4) {
@@ -677,9 +677,8 @@ var search_by_location_keyword = function(location_name, callback) {
 							var rating = 0;
 							console.log("FIO" + bias_fio);
 							console.log("FIO" + rmse_fio);
-							
-							var bias_calc = bias_fio * 2; 
-							var fio_score = bias_calc + rmse_fio;
+
+							var fio_score = 2 * Maths.abs(bias) + rmse_fio;
 							console.log(fio_score);
 							fio_score = fio_score.toFixed(2);
 							if(fio_score <= 0.9) {
