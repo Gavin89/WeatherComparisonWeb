@@ -232,6 +232,9 @@ var search_by_location_keyword = function(location_name, callback) {
 
 
 			var parse_calculations = function(today, data) {
+
+						bias = 0;
+			rmse = 0;	
 			
 			var met_office_set = false;
 			var fio_set = false;
