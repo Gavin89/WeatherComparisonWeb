@@ -238,16 +238,13 @@ var search_by_location_keyword = function(location_name, callback) {
 			var fio_set = false;
 			var mo_data_calc = {};
 			var fio_data_calc = {};
-			
-	
-			
-			data.forEach(function(item) {
+							
 			bias = 0;
 			rmse = 0;
 
-			var weather_source1 = item.weather_source;
-			bias = item.BIAS;
-			rmse = item.RMSE;
+			var weather_source1 = data.weather_source;
+			bias = data.BIAS;
+			rmse = data.RMSE;
 			
 			if (weather_source1 == "MetOffice"){
 			bias_data_mo.push(bias);
@@ -261,7 +258,7 @@ var search_by_location_keyword = function(location_name, callback) {
 			var rating = 0;
 			var score = 2 * Math.abs(bias)+ rmse;
 			score = score.toFixed(2);
-			alert(bias);
+
 			if(score <= 0.9) {
 				rating = 5;
 			}
@@ -281,10 +278,7 @@ var search_by_location_keyword = function(location_name, callback) {
 				{
 					rating = 0;
 				}
-							
-			
-					
-						
+													
 			if (weather_source1 == "MetOffice" && !met_office_set) {
 	
 			met_office_set = true;
@@ -304,7 +298,6 @@ var search_by_location_keyword = function(location_name, callback) {
 				
 				}
 			}
-			});
 		
 			}
 			
