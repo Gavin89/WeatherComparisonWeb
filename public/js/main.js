@@ -70,8 +70,7 @@ $(function() {
 
 				var api_url = "locations/by_position/"+latitude+"/"+longitude+"/";
 				var api_calc_url = "calculations/by_position/"+longitude+"/"+latitude+"/";
-				console.log(api_url);
-				console.log(api_calc_url);
+
 				$.ajax({
 					url: api_url+today_date,
 					context: document.body,
@@ -99,7 +98,6 @@ $(function() {
 					context: document.body,
 					dateType: "json"
 				}).done(function(data) {
-					console.log(today_date);
 					parse_calculations(true, data);
 					parse_calculations(false, data);
 				}).fail(function(err) {
@@ -152,14 +150,12 @@ var search_by_location_keyword = function(location_name, callback) {
 				
 				var api_url = "locations/by_position/"+location.k+"/"+location.D+"/";
 				var api_calc_url = "calculations/by_position/"+location.D+"/"+location.k+"/";
-				console.log(api_url);
-				console.log(api_calc_url);
+
 				$.ajax({
 					url: api_url+today_date,
 					context: document.body,
 					dateType: "json"
 				}).done(function(data) {
-					console.log(today_date);
 					parse_data(true, data);
 				}).fail(function(err) {
 					console.log(err);
@@ -170,7 +166,6 @@ var search_by_location_keyword = function(location_name, callback) {
 					context: document.body,
 					dateType: "json"
 				}).done(function(data) {
-					console.log('Tomorrow');
 					parse_data(false, data);
 				}).fail(function(err) {
 					console.log(err);
@@ -181,7 +176,6 @@ var search_by_location_keyword = function(location_name, callback) {
 					context: document.body,
 					dateType: "json"
 				}).done(function(data) {
-					console.log(today_date);
 					parse_calculations(true, data);
 					parse_calculations(false, data);
 				}).fail(function(err) {
@@ -261,7 +255,7 @@ var search_by_location_keyword = function(location_name, callback) {
 			var rating = 0;
 			var score = 2 * Math.abs(bias)+ rmse;
 			score = score.toFixed(2);
-			console.log(bias);
+
 			if(score <= 0.9) {
 				rating = 5;
 			}
@@ -519,7 +513,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							
 							var rating = 0;
 							var score_mo = 2 * Math.abs(bias_mo)+ rmse_mo;
-							alert(bias_mo);
+
 							score_mo = score_mo.toFixed(2);
 							if(score_mo <= 0.9) {
 								rating = 5;
