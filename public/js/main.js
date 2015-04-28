@@ -514,8 +514,8 @@ var search_by_location_keyword = function(location_name, callback) {
 							var rmse_mo = 0;
 							var bias_mo = 0;
 							
-							rmse_mo = rmse_data_mo[rmse_data_mo.length -1];
-							bias_mo = bias_data_mo[bias_data_mo.length -1];
+							rmse_mo = rmse_data_mo[0];
+							bias_mo = bias_data_mo[0];
 							
 							var rating = 0;
 							var score_mo = 2 * Math.abs(bias_mo)+ rmse_mo;
@@ -671,8 +671,8 @@ var search_by_location_keyword = function(location_name, callback) {
 							var rmse_fio = 0;
 							var bias_fio = 0;
 							
-							rmse_fio = rmse_data_fio[rmse_data_fio.length -1];
-							bias_fio = bias_data_fio[rmse_data_fio.length -1];
+							rmse_fio = rmse_data_fio[0];
+							bias_fio = bias_data_fio[0];
 							
 							var rating = 0;
 
