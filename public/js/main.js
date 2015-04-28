@@ -518,7 +518,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							bias_mo = bias_data_mo[bias_data_mo.length -1];
 							
 							var rating = 0;
-							var score_mo = 2 * Math.abs(bias)+ rmse_mo;
+							var score_mo = 2 * Math.abs(bias_mo)+ rmse_mo;
 							alert(bias_mo);
 							score_mo = score_mo.toFixed(2);
 							if(score_mo <= 0.9) {
@@ -676,7 +676,7 @@ var search_by_location_keyword = function(location_name, callback) {
 							
 							var rating = 0;
 
-							var fio_score = 2 * Math.abs(bias) + rmse_fio;
+							var fio_score = 2 * Math.abs(bias_fio) + rmse_fio;
 							
 							fio_score = fio_score.toFixed(2);
 							if(fio_score <= 0.9) {
