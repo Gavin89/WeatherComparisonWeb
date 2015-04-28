@@ -8,6 +8,10 @@
  var summary_fio
  $(function() {
  
+ 			rmse_data_mo.length = 0;
+			bias_data_mo.length = 0;
+			rmse_data_fio.length = 0;
+			bias_data_fio.length = 0;
     geocoder = new google.maps.Geocoder();
 	
 	 $('#location_search_btn').click(function() {
@@ -118,6 +122,7 @@ var search_by_location_keyword = function(location_name, callback) {
 			bias_data_mo.length = 0;
 			rmse_data_fio.length = 0;
 			bias_data_fio.length = 0;
+
 			var locationCity;
 			location_name += ',uk';
 			geocoder.geocode( { 'address': location_name}, function(results, status) {
