@@ -2238,7 +2238,7 @@ table th[class*="col-"] {
 .table-hover > tbody > tr.danger:hover > th {
   background-color: #ebcccc;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 900px) {
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
