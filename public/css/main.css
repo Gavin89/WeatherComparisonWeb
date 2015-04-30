@@ -207,8 +207,6 @@ table {
 	margin-bottom: 0px !important;
     table-layout: fixed;
     word-wrap: break-word;
-    overflow: hidden;
-    border: 3px solid yellow;
 }
 .td {
 	
