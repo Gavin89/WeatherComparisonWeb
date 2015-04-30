@@ -317,19 +317,24 @@
 		});
 		
 		
-		function testPostCode () {
-		var newPostCode = checkPostCode  (document.getElementById('location_search_name').value);
-			if (newPostCode) {
-				document.getElementById('location_search_name').value = newPostCode;
-				document.getElementById('location_search_name').style.borderColor = "green";
-		} 
-			else 
-			{
-				alert ("Postcode has invalid format");
-				document.getElementById('location_search_name').style.borderColor = "red";
-				
-			}
-		}
+		function giveFocus(aForm) {
+			aForm.searchLocation.focus()
+        return true
+        }
+
+	
+		var regExpressPostcode = /[a-zA-Z]{1,2}[0-9][0-9A-Za-z]? [0-9][a-zA-Z]{2}/
+
+function checkForm(aForm) {
+
+        if (!regExpressPostcode.test(aForm.searchLocation.value)){
+        window.alert("Please enter a correctly formatted UK postcode: eg. CN23 6FR")
+        aForm.searchLocation.focus()
+        aForm.searchLocation.select()
+        return false
+                }
+        return true
+        }
 		
 	</script>
 

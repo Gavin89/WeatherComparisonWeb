@@ -7,7 +7,18 @@
 
  var summary_fio
  $(function() {
- 
+			
+				
+			var regExpressPostcode = /[a-zA-Z]{1,2}[0-9][0-9A-Za-z]? [0-9][a-zA-Z]{2}/
+			
+        if (!regExpressPostcode.test(aForm.searchLocation.value)){
+        window.alert("Please enter a correctly formatted UK postcode: eg. CN23 6FR")
+        aForm.searchLocation.focus()
+        aForm.searchLocation.select()
+        return false
+                }
+        return true
+		}
  			rmse_data_mo.length = 0;
 			bias_data_mo.length = 0;
 			rmse_data_fio.length = 0;
