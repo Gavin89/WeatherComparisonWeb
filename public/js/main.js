@@ -77,7 +77,7 @@ $(function() {
 				console.log(api_url+today_date);
 				console.log(api_calc_url+tomorrow_date);
 				console.log(today_date);
-				console.log(tomorow_date);
+				console.log(tomorrow_date);
 				$.ajax({
 					url: api_url+today_date,
 					context: document.body,
@@ -161,7 +161,7 @@ var search_by_location_keyword = function(location_name, callback) {
 				console.log(api_url+today_date);
 				console.log(api_calc_url+tomorrow_date);
 				console.log(today_date);
-				console.log(tommorow_date);
+				console.log(tomorrow_date);
 				$.ajax({
 					url: api_url+today_date,
 					context: document.body,
