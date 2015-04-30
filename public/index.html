@@ -265,7 +265,7 @@
 	<script src='http://code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
 	<script type="text/javascript">
 
-		currentTab = "#tabForecasts";
+		window.currentTab = "tabForecasts";
 		
 		$(document).ready(function(){
 			var months = ["January","February","March","April","May","June","July",
@@ -307,10 +307,10 @@
 			
 			$('#tabSwitcher button').click(function() {
 				var tab = $(this).attr('tabid');
-				$(currentTab).removeClass('active');
+				$(window.currentTab).removeClass('active');
 				$('#'+tab).removeClass('hidden');
-				$(currentTab).addClass('hidden');
-				currentTab = tab;
+				$('#'+window.currentTab).addClass('hidden');
+				window.currentTab = tab;
 				$(this).addClass('active');
 				
 			});
