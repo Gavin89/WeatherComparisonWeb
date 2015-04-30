@@ -66,7 +66,7 @@ $(function() {
 				navigator.geolocation.getCurrentPosition(function (location){
 
 				var yestDate = new Date();
-				yestDate.setDate(date.getDate() - 1);
+				yestDate.setDate(yestDate.getDate() - 1);
 				var yesterday_date = yestDate.format("dd-mm-yyyy");
 
 
@@ -177,7 +177,7 @@ var search_by_location_keyword = function(location_name, callback) {
 				locationTitle.append(locationTown + ", " + locationCity);	
 
 				var yestDate = new Date();
-				yestDate.setDate(date.getDate() - 1);
+				yestDate.setDate(yestDate.getDate() - 1);
 				var yesterday_date = yestDate.format("dd-mm-yyyy");
 
 				var date = new Date();
