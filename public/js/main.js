@@ -458,14 +458,19 @@ var search_by_location_keyword = function(location_name, callback) {
 						}
 						
 						temp_metoffice.append(temp_col);
-						
+
+
 						//Windspeed
+						var img_windspeed = $('<img/>').addClass('img-circle');
 						var windspeed = value.windspeed;
-						var windspeed_col = $('<td/>').text(windspeed+'mph');
+						var windspeed_col = $('<td/>');
+													                    			
+						img_windspeed.attr('src', 'images/windspeed.png');
 						
-				
-						windspeed_col.addClass('mo_windspeed');
-									
+						windspeed_col.append(img_windspeed);	
+						windspeed_col.append($('<p/>').text(windspeed+'mph'));
+
+						
 						windspeed_metoffice.append(windspeed_col);
 						
 						//Summary
