@@ -30,9 +30,8 @@
 		else {
 		search_by_location_keyword(location_name);
 		document.getElementById('location_search_name').style.borderColor = "green";
-		document.getElementById('location_search_name').focus();
+				document.getElementById('location_search_name').focus();
 		document.getElementById('location_search_name').select();
-		}
 		}
 	 });
 	 
@@ -43,16 +42,14 @@
 		     if (!regExpressPostcode.test(location_name)){
 				window.alert("Please enter a correctly formatted UK postcode: eg. B4 7ET")
 				document.getElementById('location_search_name').style.borderColor = "red";
-				document.getElementById('location_search_name').focus();
-				document.getElementById('location_search_name').select();
-		}
+						document.getElementById('location_search_name').focus();
+		document.getElementById('location_search_name').select();
 			}
 		else {
 		search_by_location_keyword(location_name);
 		document.getElementById('location_search_name').style.borderColor = "green";
-		document.getElementById('location_search_name').focus();
+				document.getElementById('location_search_name').focus();
 		document.getElementById('location_search_name').select();
-		}
 		}
 });
 $('#location_search_name').keyup(function(e){
