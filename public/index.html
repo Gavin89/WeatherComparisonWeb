@@ -307,6 +307,11 @@
 			
 			$('#tabSwitcher button').click(function() {
 				var tab = $(this).attr('id');
+				var tabId = $(this).attr('tabid');
+
+				$('#'+tabId).removeClass('hidden');
+				$('#'+window.currentTab).addClass('hidden');
+				window.currentTab = tab;
 
 				$(this).addClass('active');
 
@@ -318,7 +323,14 @@
 				
 			});
 		});
+
+			
+				
+				
 		
+				
+			});
+
 	</script>
 
 			
