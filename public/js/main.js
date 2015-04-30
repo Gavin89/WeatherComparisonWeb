@@ -22,9 +22,7 @@
 		var location_name = $('#location_search_name').val();
 					
         if (!regExpressPostcode.test(location_name)){
-        window.alert("Please enter a correctly formatted UK postcode: eg. CN23 6FR")
-        aForm.searchLocation.focus()
-        aForm.searchLocation.select()
+        window.alert("Please enter a correctly formatted UK postcode: eg. WV10 3ET")
 		}
 		else {
 		search_by_location_keyword(location_name);
@@ -35,11 +33,9 @@
 	 $('#location_search_name').bind("enterKey",function(e){
  	var location_name = $('#location_search_name').val();
 
-		        if (!regExpressPostcode.test(location_name)){
-        window.alert("Please enter a correctly formatted UK postcode: eg. CN23 6FR")
-        aForm.searchLocation.focus()
-        aForm.searchLocation.select()
-		}
+		     if (!regExpressPostcode.test(location_name)){
+				window.alert("Please enter a correctly formatted UK postcode: eg. CN23 6FR")
+			}
 		else {
 		search_by_location_keyword(location_name);
 		}
