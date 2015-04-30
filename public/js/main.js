@@ -135,6 +135,7 @@ var search_by_location_keyword = function(location_name, callback) {
 				locationTitle = $('#location_name');
 		
 				var location = results[0].geometry.location;
+				console.log(location);
 				var locationTown = results[0].address_components[1].long_name;
 				try{
 				if(typeof (results[0].address_components[3].long_name !== 'undefined')){
