@@ -67,7 +67,7 @@ $(function() {
 
 				var yestDate = new Date();
 				yestDate.setDate(date.getDate() - 1);
-				var yesterday_date = date.format("dd-mm-yyyy");
+				var yesterday_date = yestDate.format("dd-mm-yyyy");
 
 
 				var date = new Date();
@@ -100,10 +100,7 @@ $(function() {
 
 				var api_url = "locations/by_position/"+latitude+"/"+longitude+"/";
 				var api_calc_url = "calculations/by_position/"+longitude+"/"+latitude+"/";
-				console.log(api_url+today_date);
-				console.log(api_calc_url+tomorrow_date);
-				console.log(today_date);
-				console.log(tomorrow_date);
+
 				$.ajax({
 					url: api_url+today_date,
 					context: document.body,
@@ -179,6 +176,10 @@ var search_by_location_keyword = function(location_name, callback) {
 				locationTitle.empty();
 				locationTitle.append(locationTown + ", " + locationCity);	
 
+				var yestDate = new Date();
+				yestDate.setDate(date.getDate() - 1);
+				var yesterday_date = yestDate.format("dd-mm-yyyy");
+
 				var date = new Date();
 				var today_date = date.format("dd-mm-yyyy");
 				date.setDate(date.getDate() + 1);
@@ -211,7 +212,7 @@ var search_by_location_keyword = function(location_name, callback) {
 				});
 
 				$.ajax({
-					url: api_calc_url+today_date,
+					url: api_calc_url+yesterday_date,
 					context: document.body,
 					dateType: "json"
 				}).done(function(data) {
