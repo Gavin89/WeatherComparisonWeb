@@ -188,6 +188,11 @@ a.clickable:hover { text-decoration:none; }
 	
 	
 }
+
+.table-nonfluid {
+   width: auto !important;
+}
+
 .page-header {
 	height: 20px;
 	text-align: center;
