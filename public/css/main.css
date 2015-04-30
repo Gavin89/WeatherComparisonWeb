@@ -173,7 +173,10 @@ h2{
 a.clickable { color: inherit; }
 a.clickable:hover { text-decoration:none; }
 
-
+.btn-default{
+	background-color:#3299CC !important;
+}
+}
 .navbar {
 	
 	height: 80px;
