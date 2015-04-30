@@ -309,7 +309,7 @@
 				var tab = $(this).attr('tabid');
 				$(currentTab).removeClass('active');
 				$('#'+tab).removeClass('hidden');
-				$('#'+currentTab).addClass('hidden');
+				$(currentTab).addClass('hidden');
 				currentTab = tab;
 				$(this).addClass('active');
 				
