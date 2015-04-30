@@ -583,12 +583,14 @@ var search_by_location_keyword = function(location_name, callback) {
 						var rating_col1 = $('<td/>');
 						var img_rating1 = $('<img/>').attr('title', "RMSE: "+score_mo+"\nBIAS: "+bias_mo);
 						img_rating1.attr('src', 'images/'+rating+'-rating.jpg');
+
 						rating_col1.append(img_rating1);		
 						windspeed_metoffice.append(rating_col1);
 						
 						var rating_col2 = $('<td/>');
 						var img_rating2 = $('<img/>').attr('title', "RMSE: "+score_mo+"\nBIAS: "+bias_mo);
 						img_rating2.attr('src', 'images/'+rating+'-rating.jpg');
+						
 						rating_col2.append(img_rating2);		
 						summary_metoffice.append(rating_col2);
 						
