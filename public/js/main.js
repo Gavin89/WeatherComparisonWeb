@@ -64,6 +64,12 @@ $(function() {
 
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function (location){
+
+				var yestDate = new Date();
+				yestDate.setDate(date.getDate() - 1);
+				var yesterday_date = date.format("dd-mm-yyyy");
+
+
 				var date = new Date();
 			
 				var today_date = date.format("dd-mm-yyyy");
@@ -121,7 +127,7 @@ $(function() {
 				});
 
 				$.ajax({
-					url: api_calc_url+today_date,
+					url: api_calc_url+yesterday_date,
 					context: document.body,
 					dateType: "json"
 				}).done(function(data) {
