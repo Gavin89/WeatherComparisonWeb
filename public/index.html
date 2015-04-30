@@ -306,14 +306,14 @@
 			
 			
 			$('#tabSwitcher button').click(function() {
-				var tab = $(this).attr('id');
+				var tab = $(this).attr('tabid');
 
 				$(this).addClass('active');
 
-				if (tab == "forecastButton") {
-					$('#comparisonButton').removeClass('active');
+				if (tab == "tabForecasts") {
+					$('#tabComparisons').removeClass('active');
 				} else {
-					$('#forecastButton').removeClass('active');
+					$('#tabForecasts').removeClass('active');
 				}	
 				
 			});
