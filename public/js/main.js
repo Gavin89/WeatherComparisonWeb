@@ -47,7 +47,7 @@ $(function() {
 				var date = new Date();
 			
 				var today_date = date.format("dd-mm-yyyy");
-				date.setDate(date.getDate() - 1);
+				date.setDate(date.getDate() + 1);
 				var tomorrow_date = date.format("dd-mm-yyyy");
 				geocoder = new google.maps.Geocoder();
 				longitude = location.coords.longitude; 
