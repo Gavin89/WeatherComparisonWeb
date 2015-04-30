@@ -274,6 +274,7 @@
 	if(which == "2") {
 	tab = 'tabComparisons'
 	}
+}
 
 		window.currentTab = "tabForecasts";
 		
@@ -317,7 +318,7 @@
 			
 			$('#tabSwitcher button').click(function() {
 
-
+				$(tab+window.currentTab+"'").removeClass('active');
 				$('#'+tab).removeClass('hidden');
 				$('#'+window.currentTab).addClass('hidden');
 				window.currentTab = tab;
@@ -325,7 +326,6 @@
 				
 			});
 		});
-}
 		
 	</script>
 
