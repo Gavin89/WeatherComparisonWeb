@@ -23,11 +23,11 @@
 					
         if (!regExpressPostcode.test(location_name)){
         window.alert("Please enter a correctly formatted UK postcode: eg. B4 7ET")
-		$('location_search_name').style.borderColor = "red";
+		document.getElementById('location_search_name').style.borderColor = "red";
 		}
 		else {
 		search_by_location_keyword(location_name);
-		$('location_search_name').style.borderColor = "green";
+		document.getElementById('location_search_name').style.borderColor = "green";
 		}
 	 });
 	 
