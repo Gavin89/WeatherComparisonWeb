@@ -317,8 +317,8 @@
 			
 			
 			$('#tabSwitcher button').click(function() {
-
-				$(tab+window.currentTab+"'").removeClass('active');
+				console.log("[tabid='"+window.currentTab+"'");
+				$(tab+window.currentTab).removeClass('active');
 				$('#'+tab).removeClass('hidden');
 				$('#'+window.currentTab).addClass('hidden');
 				window.currentTab = tab;
