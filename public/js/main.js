@@ -16,9 +16,7 @@
         aForm.searchLocation.focus()
         aForm.searchLocation.select()
         return false
-                }
-        return true
-		}
+		
  			rmse_data_mo.length = 0;
 			bias_data_mo.length = 0;
 			rmse_data_fio.length = 0;
