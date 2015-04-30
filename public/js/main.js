@@ -127,6 +127,7 @@ var search_by_location_keyword = function(location_name, callback) {
 			bias_data_fio.length = 0;
 
 			var locationCity;
+			console.log(location_name);
 			location_name += ',uk';
 			geocoder.geocode( { 'address': location_name}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
