@@ -333,7 +333,7 @@
 				$('#'+window.currentTab).addClass('hidden');
 				window.currentTab = tab;
 				alert(window.currentTab);
-				$('#'+window.currentTab).addClass('active');
+				 $(this).siblings().removeClass("active");
 				
 			});
 		});
