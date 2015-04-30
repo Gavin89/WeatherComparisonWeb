@@ -39,8 +39,8 @@
 					
 					<h5 style="text-align:center;"  id="location_name"><br/></h5>
 					<div class="btn-group" role="group" id="tabSwitcher" style="margin-top: -5px; margin-left: 15px; margin-bottom: 5px; padding-top:5px;">
-							<button type="button" class="btn btn-default active" tabid="tabForecasts">Forecasts</button>
-							<button type="button" class="btn btn-default " tabid="tabComparisons">Comparisons</button>
+							<button type="button" class="btn btn-default active" id = "forecastButton" tabid="tabForecasts">Forecasts</button>
+							<button type="button" class="btn btn-default " id = "comparisonButton" tabid="tabComparisons">Comparisons</button>
 					</div>
 						<div class="col-sm-3 pull-right">		
 							<div class="input-group pull-right">
@@ -307,10 +307,10 @@
 			
 			$('#tabSwitcher button').click(function() {
 				var tab = $(this).attr('tabid');
-				$(currentTab).removeClass('active');
+				$('#forecastButton').removeClass('active');
 				$('#'+tab).removeClass('hidden');
 				$('#'+window.currentTab).addClass('hidden');
-				window.currentTab= tab;
+				window.currentTab = tab;
 				$(this).addClass('active');
 				
 			});
