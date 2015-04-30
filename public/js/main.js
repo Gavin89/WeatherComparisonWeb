@@ -74,10 +74,10 @@ $(function() {
 
 				var api_url = "locations/by_position/"+latitude+"/"+longitude+"/";
 				var api_calc_url = "calculations/by_position/"+longitude+"/"+latitude+"/";
-				console.log(api_url);
-				console.log(api_calc_url);
+				console.log(api_url+today_date);
+				console.log(api_calc_url+tomorrow_date);
 				console.log(today_date);
-				console.log(tommorow_date);
+				console.log(tomorow_date);
 				$.ajax({
 					url: api_url+today_date,
 					context: document.body,
@@ -158,8 +158,8 @@ var search_by_location_keyword = function(location_name, callback) {
 				
 				var api_url = "locations/by_position/"+location.k+"/"+location.D+"/";
 				var api_calc_url = "calculations/by_position/"+location.D+"/"+location.k+"/";
-				console.log(api_url);
-				console.log(api_calc_url);
+				console.log(api_url+today_date);
+				console.log(api_calc_url+tomorrow_date);
 				console.log(today_date);
 				console.log(tommorow_date);
 				$.ajax({
