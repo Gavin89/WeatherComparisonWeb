@@ -193,8 +193,8 @@ var search_by_location_keyword = function(location_name, callback) {
 				date.setDate(date.getDate() + 1);
 				var tomorrow_date = date.format("dd-mm-yyyy");
 				
-				var api_url = "locations/by_position/"+location.A+"/"+location.F+"/";
-				var api_calc_url = "calculations/by_position/"+location.F+"/"+location.A+"/";
+				var api_url = "locations/by_position/"+location.lng()+"/"+location.lat()+"/";
+				var api_calc_url = "calculations/by_position/"+location.lat()+"/"+location.lng()+"/";
 				console.log(api_url+today_date);
 				console.log(api_calc_url+tomorrow_date);
 				console.log(today_date);
